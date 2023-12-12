@@ -31,7 +31,7 @@ def wait_key():
 
 while True:
     cls()
-    data = [line.strip() for line in open(r"C:\Users\LukeH\Desktop\url.list", 'r')]
+    data = [line.strip() for line in open(r"url.list", 'r')]
     for line in data: 
         print(line)
         time.sleep(random.randint(9, 9999) * 0.000001)
