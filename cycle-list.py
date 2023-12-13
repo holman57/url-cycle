@@ -4,6 +4,7 @@ import os
 import time
 import sys
 from tqdm import tqdm
+import json
 
 
 def cls():
@@ -31,20 +32,35 @@ def wait_key():
 
 while True:
     cls()
-    data = [line.strip() for line in open(r"url.list", 'r')]
-    for line in data: 
-        print(line)
-        time.sleep(random.randint(9, 9999) * 0.000001)
-    time.sleep(random.randint(0, 1))
-    cls()
-    random.shuffle(data)
+    # data = [line.strip() for line in open(r"url.list", 'r')]
+    # for line in data: 
+    #     print(line)
+    #     time.sleep(random.randint(9, 9999) * 0.00001)
+    # time.sleep(random.randint(0, 1))
+    # cls()
+    # random.shuffle(data)
     
-    for line in data: 
-        print(line)
-        time.sleep(random.randint(9, 9999) * 0.000001)
-    time.sleep(random.randint(1, 3))
-    cls()
-    for page in tqdm(data):
+    # for line in data: 
+    #     print(line)
+    #     time.sleep(random.randint(9, 9999) * 0.00001)
+    # time.sleep(random.randint(0, 1))
+    # cls()
+
+    with open('url.json') as json_file:
+        data = json.load(json_file)
+
+    # print(data)
+    priority1 = data["High Priority"]
+    priority2 = data["Normal Priority"] + data["Low Priority"]
+    random.shuffle(priority1)
+    random.shuffle(priority2)
+    loop_list = priority1 + priority2
+    print(priority1)
+    time.sleep(2)
+    print(priority2)
+    time.sleep(5)
+
+    for page in tqdm(loop_list):
         print()
         print()
         print("\t", page)
@@ -64,3 +80,22 @@ while True:
     time.sleep(2)
 
 
+
+    # for page in tqdm(data):
+    #     print()
+    #     print()
+    #     print("\t", page)
+    #     print()
+    #     print()
+    #     print()
+    #     print("\t\tPress Any Key...")
+    #     a = wait_key()
+    #     if a == '\x1b': exit(0)
+    #     if a == 'q': exit(0)
+    #     webbrowser.open(page)
+    #     cls()
+    #     continue
+    # cls()
+    # print()
+    # print("\t\tCycle Complete!")
+    # time.sleep(2)
