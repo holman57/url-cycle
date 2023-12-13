@@ -55,10 +55,6 @@ while True:
     random.shuffle(priority1)
     random.shuffle(priority2)
     loop_list = priority1 + priority2
-    print(priority1)
-    time.sleep(2)
-    print(priority2)
-    time.sleep(5)
 
     for page in tqdm(loop_list):
         print()
