@@ -5,6 +5,7 @@ import time
 import sys
 from tqdm import tqdm
 import json
+import argparse
 
 
 def cls():
@@ -46,7 +47,16 @@ while True:
     # time.sleep(random.randint(0, 1))
     # cls()
 
-    with open('url.json') as json_file:
+    parser = argparse.ArgumentParser(
+                    prog='Cycle List',
+                    description='!',
+                    epilog='_')
+    
+    parser.add_argument('filename')
+    args = parser.parse_args()
+    print(args.filename)
+
+    with open(str(args.filename)) as json_file:
         data = json.load(json_file)
 
     # print(data)
