@@ -67,13 +67,7 @@ while True:
     loop_list = priority1 + priority2
 
     for page in tqdm(loop_list):
-        print()
-        print()
-        print("\t", page)
-        print()
-        print()
-        print()
-        print("\t\tPress Any Key...")
+        print("\n\n\t", page, "\n\n\n\t\tPress Any Key...")
         a = wait_key()
         if a == '\x1b': exit(0)
         if a == 'q': exit(0)
