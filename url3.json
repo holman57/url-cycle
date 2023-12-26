@@ -1,15 +1,17 @@
 {
   "High Priority": [],
   "Normal Priority": [
-    "https://academy.hackthebox.com/dashboard",
+    "https://www.educative.io/courses/interactive-dashboards-and-data-apps-with-plotly-and-dash",
+    "https://academy.hackthebox.com/module/49",
     "https://huggingface.co/learn/nlp-course/",
     "https://leetcode.com/explore/learn/card/sql-language/",
     "https://leetcode.com/studyplan/introduction-to-pandas/",
-    "https://tryhackme.com/path-action/redteaming/join",
+    "https://tryhackme.com/room/breachingad",
     "https://www.hackerrank.com/domains/sql",
     "https://app.codesignal.com/arcade/db"
   ],
   "Low Priority": [
+    "https://www.linkedin.com/learning/microsoft-teams-essential-training-17445610",
     "https://www.linkedin.com/learning/career-essentials-in-system-administration-by-microsoft-and-linkedin",
     "https://www.linkedin.com/learning/windows-server-2022-essential-training",
     "https://www.linkedin.com/learning/the-data-skills-survival-kit",
@@ -50,7 +52,6 @@
     "https://www.linkedin.com/learning/building-nlp-pipelines-with-spacy",
     "https://www.linkedin.com/learning/hands-on-pytorch-machine-learning/",
     "https://www.educative.io/courses/deep-learning-pytorch-fundamentals",
-    "https://www.educative.io/courses/interactive-dashboards-and-data-apps-with-plotly-and-dash",
     "https://www.educative.io/courses/machine-learning-numpy-pandas-scikit-learn",
     "https://www.educative.io/module/intro-python-data-analysis"
   ]
