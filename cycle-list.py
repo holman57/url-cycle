@@ -7,6 +7,18 @@ from tqdm import tqdm
 import json
 import argparse
 
+# Mac
+# chrome_path = 'open -a /Applications/Google\ Chrome.app %s'
+
+# Windows
+# chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
+
+# Linux
+# chrome_path = '/usr/bin/google-chrome %s'
+
+# webrowser.register('chrome', None, webbrowser.BackgroundBrowser(chrome_path), 1)
+# os.system(chrome_path)
+# webrowser.get('chrome').open(url)
 
 def cls():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -71,7 +83,7 @@ while True:
         a = wait_key()
         if a == '\x1b': exit(0)
         if a == 'q': exit(0)
-        webbrowser.open(page)
+        webbrowser.open(page, new=1, autoraise=True)
         cls()
         continue
     cls()
@@ -80,22 +92,3 @@ while True:
     time.sleep(2)
 
 
-
-    # for page in tqdm(data):
-    #     print()
-    #     print()
-    #     print("\t", page)
-    #     print()
-    #     print()
-    #     print()
-    #     print("\t\tPress Any Key...")
-    #     a = wait_key()
-    #     if a == '\x1b': exit(0)
-    #     if a == 'q': exit(0)
-    #     webbrowser.open(page)
-    #     cls()
-    #     continue
-    # cls()
-    # print()
-    # print("\t\tCycle Complete!")
-    # time.sleep(2)
