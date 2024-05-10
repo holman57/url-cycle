@@ -7,88 +7,67 @@ from tqdm import tqdm
 import json
 import argparse
 
-# Mac
-# chrome_path = 'open -a /Applications/Google\ Chrome.app %s'
-
-# Windows
-# chrome_path = 'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s'
-
-# Linux
-# chrome_path = '/usr/bin/google-chrome %s'
-
-# webrowser.register('chrome', None, webbrowser.BackgroundBrowser(chrome_path), 1)
-# os.system(chrome_path)
-# webrowser.get('chrome').open(url)
 
 def cls():
-    os.system('cls' if os.name == 'nt' else 'clear')
+    os.system("cls" if os.name == "nt" else "clear")
 
 
 def wait_key():
     result = None
-    if os.name == 'nt':
+    if os.name == "nt":
         import msvcrt
+
         result = msvcrt.getwch()
     else:
         import termios
+
         fd = sys.stdin.fileno()
-        oldterm = termios.tcgetattr(fd)
-        newattr = termios.tcgetattr(fd)
-        newattr[3] = newattr[3] & ~termios.ICANON & ~termios.ECHO
-        termios.tcsetattr(fd, termios.TCSANOW, newattr)
+        old_term = termios.tcgetattr(fd)
+        new_attr = termios.tcgetattr(fd)
+        new_attr[3] = new_attr[3] & ~termios.ICANON & ~termios.ECHO
+        termios.tcsetattr(fd, termios.TCSANOW, new_attr)
         try:
             result = sys.stdin.read(1)
-        except IOError: pass
-        finally: termios.tcsetattr(fd, termios.TCSAFLUSH, oldterm)
+        except IOError:
+            pass
+        finally:
+            termios.tcsetattr(fd, termios.TCSAFLUSH, old_term)
     return result
+
+
+def cycle(url):
+    print("\n\n\t", url, "\n\n\n\t\tPress Any Key...")
+    a = wait_key()
+    if a == "\x1b" or a == "q":
+        exit(0)
+    webbrowser.open(url, new=1, autoraise=True)
+    cls()
 
 
 while True:
     cls()
-    # data = [line.strip() for line in open(r"url.list", 'r')]
-    # for line in data: 
-    #     print(line)
-    #     time.sleep(random.randint(9, 9999) * 0.00001)
-    # time.sleep(random.randint(0, 1))
-    # cls()
-    # random.shuffle(data)
-    
-    # for line in data: 
-    #     print(line)
-    #     time.sleep(random.randint(9, 9999) * 0.00001)
-    # time.sleep(random.randint(0, 1))
-    # cls()
-
-    parser = argparse.ArgumentParser(
-                    prog='Cycle List',
-                    description='!',
-                    epilog='_')
-    
-    parser.add_argument('filename')
+    parser = argparse.ArgumentParser(prog="Cycle List", description="!", epilog="_")
+    parser.add_argument("filename")
     args = parser.parse_args()
     print(args.filename)
-
     with open(str(args.filename)) as json_file:
         data = json.load(json_file)
-
-    # print(data)
     priority1 = data["High Priority"]
-    priority2 = data["Normal Priority"] + data["Low Priority"]
+    priority2 = data["Normal Priority"]
+    priority3 = data["Low Priority"]
     random.shuffle(priority1)
     random.shuffle(priority2)
-    loop_list = priority1 + priority2
-
-    for page in tqdm(loop_list):
-        print("\n\n\t", page, "\n\n\n\t\tPress Any Key...")
-        a = wait_key()
-        if a == '\x1b': exit(0)
-        if a == 'q': exit(0)
-        webbrowser.open(page, new=1, autoraise=True)
-        cls()
+    random.shuffle(priority3)
+    loop_list = priority2 + priority3
+    i = 0
+    for page in tqdm(priority2):
+        if i % 7 == 0:
+            random_priority1 = random.choice(priority1)
+            cycle(random_priority1)
+        i += 1
+        cycle(page)
         continue
     cls()
     print()
     print("\t\tCycle Complete!")
     time.sleep(2)
-
-
