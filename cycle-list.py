@@ -79,5 +79,5 @@ while True:
         continue
     cls()
     print()
-    print("\t\tCycle Complete!")
+    print("\t\t\aCycle Complete!")
     time.sleep(2)
