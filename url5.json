@@ -1,15 +1,16 @@
 {
-  "High Priority": [],
+  "High Priority": [
+    "https://leetcode.com/",
+    "https://www.hackerrank.com/",
+    "https://tryhackme.com/",
+    "https://app.hackthebox.com/",
+    "https://academy.hackthebox.com/",
+    "https://learnsql.com/dashboard/",
+    "https://app.codesignal.com/",
+    "https://www.typing.com/student/lessons"
+  ],
   "Normal Priority": [],
   "Low Priority": [
-    "https://leetcode.com/explore/learn/card/sql-language/",
-    "https://www.hackerrank.com/domains/sql",
-    "https://app.codesignal.com/arcade/db",
-    "https://learnsql.com/dashboard/",
-    "https://tryhackme.com/paths",
-    "https://app.hackthebox.com/starting-point",
-    "https://academy.hackthebox.com/module/details/34",
-    "https://www.typingclub.com/sportal/",
     "https://www.educative.io/courses/interactive-dashboards-and-data-apps-with-plotly-and-dash",
     "https://www.educative.io/courses/advance-pandas-going-beyond-the-basics/",
     "https://www.educative.io/path/python-data-analysis",
