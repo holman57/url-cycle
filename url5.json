@@ -1,13 +1,15 @@
 {
   "High Priority": [
     "https://leetcode.com/",
-    "https://www.hackerrank.com/",
+    "https://www.hackerrank.com/dashboard",
+    "https://app.codesignal.com/arcade",
+    "https://learn.codesignal.com/",
+    "https://learnsql.com/dashboard/",
     "https://tryhackme.com/",
     "https://app.hackthebox.com/",
-    "https://academy.hackthebox.com/",
-    "https://learnsql.com/dashboard/",
-    "https://app.codesignal.com/",
-    "https://www.typing.com/student/lessons"
+    "https://academy.hackthebox.com/dashboard",
+    "https://www.typing.com/student/lessons",
+    "https://www.kaggle.com/"
   ],
   "Normal Priority": [],
   "Low Priority": [

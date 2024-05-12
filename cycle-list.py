@@ -35,11 +35,13 @@ def wait_key():
     return result
 
 
-def cycle(url, cycle_iteration, total_iterations):
+def cycle(url, cycle_iteration, high_priority_items, total_iterations):
     print(
-        "\n\n\tcycle:",
+        "\n\n\t\t\t     High Priority Items:",
+        high_priority_items,
+        "\n\tcycle:",
         cycle_iteration,
-        "\t\ttotal iterations:",
+        "\t\tTotal Iterations:",
         total_iterations,
         "\n\n\t",
         url,
@@ -62,20 +64,24 @@ while True:
     print(args.filename)
     with open(str(args.filename)) as json_file:
         data = json.load(json_file)
-    priority1 = data["High Priority"]
-    priority2 = data["Normal Priority"]
-    priority3 = data["Low Priority"]
+    priority1 = [x for x in data["High Priority"]]
+    priority2 = [x for x in data["Normal Priority"]]
+    priority3 = [x for x in data["Low Priority"]]
     random.shuffle(priority1)
     random.shuffle(priority2)
     random.shuffle(priority3)
     loop_list = priority2 + priority3
-    i = 0
+    h, i = 0, 0
     for page in tqdm(loop_list):
-        if i % 7 == 0:
-            random_priority1 = random.choice(priority1)
-            cycle(random_priority1, c, i)
+        if i % 2 == 0:
+            if len(priority1) == 0:
+                priority1 = [x for x in data["High Priority"]]
+                random.shuffle(priority1)
+            h += 1
+            random_priority1 = priority1.pop(0)
+            cycle(random_priority1, c, h, i)
         i += 1
-        cycle(page, c, i)
+        cycle(page, c, h, i)
     cls()
     print()
     print("\t\t\aCycle Complete!")
