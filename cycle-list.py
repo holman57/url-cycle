@@ -76,7 +76,6 @@ while True:
             cycle(random_priority1, c, i)
         i += 1
         cycle(page, c, i)
-        continue
     cls()
     print()
     print("\t\t\aCycle Complete!")
