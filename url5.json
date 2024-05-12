@@ -11,8 +11,7 @@
     "https://www.typing.com/student/lessons",
     "https://www.kaggle.com/"
   ],
-  "Normal Priority": [],
-  "Low Priority": [
+  "Normal Priority": [
     "https://www.educative.io/courses/interactive-dashboards-and-data-apps-with-plotly-and-dash",
     "https://www.educative.io/courses/advance-pandas-going-beyond-the-basics/",
     "https://www.educative.io/path/python-data-analysis",
@@ -94,10 +93,12 @@
     "https://www.linkedin.com/learning/devops-foundations-transforming-the-enterprise/",
     "https://www.linkedin.com/learning/enterprise-architecture-foundations/",
     "https://www.linkedin.com/learning/agile-foundations",
-    "https://www.linkedin.com/learning/enterprise-agile-changing-your-culture/",
     "https://www.linkedin.com/learning/building-an-enterprise-api-for-advanced-azure-developers/",
+    "https://www.linkedin.com/learning/enterprise-agile-changing-your-culture/",
     "https://www.linkedin.com/learning/leading-with-innovation/",
-    "https://www.linkedin.com/learning/time-management-fundamentals-14548057/",
+    "https://www.linkedin.com/learning/time-management-fundamentals-14548057/"
+  ],
+  "Low Priority": [
     "https://www.linkedin.com/learning/learning-bash-scripting-17063287/",
     "https://www.linkedin.com/learning/bash-patterns-and-regular-expressions",
     "https://www.linkedin.com/learning/sed-essential-training",
