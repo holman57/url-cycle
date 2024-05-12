@@ -54,7 +54,7 @@ def cycle(url, cycle_iteration, high_priority_items, total_iterations):
     cls()
 
 
-c = 0
+c, h, i = 0, 0, 0
 while True:
     c += 1
     cls()
@@ -71,7 +71,6 @@ while True:
     random.shuffle(priority2)
     random.shuffle(priority3)
     loop_list = priority2 + priority3
-    h, i = 0, 0
     for page in tqdm(loop_list):
         if i % 2 == 0:
             if len(priority1) == 0:
