@@ -69,7 +69,12 @@
     "https://www.linkedin.com/learning/sql-server-reporting-services/",
     "https://www.linkedin.com/learning/sql-server-integration-services-2/",
     "https://www.linkedin.com/learning/sharepoint-online-essential-training-beyond-the-basics/",
+    "https://www.linkedin.com/learning/paths/master-microsoft-outlook",
+    "https://www.linkedin.com/learning/paths/advance-your-career-as-an-administrative-professional",
     "https://www.linkedin.com/learning/excel-power-query-get-transform-2/",
+    "https://www.linkedin.com/learning/paths/master-python-for-data-science-16361344",
+    "https://www.linkedin.com/learning/paths/career-essentials-in-data-analysis-by-microsoft-and-linkedin",
+    "https://www.linkedin.com/learning/paths/fundamentals-to-become-a-machine-learning-engineer",
     "https://www.linkedin.com/learning/data-analytics-for-business-professionals-14936642/",
     "https://www.linkedin.com/learning/data-visualization-for-data-analysis-and-analytics/",
     "https://www.linkedin.com/learning/visual-studio-2019-essential-training",
@@ -96,12 +101,21 @@
     "https://www.linkedin.com/learning/building-an-enterprise-api-for-advanced-azure-developers/",
     "https://www.linkedin.com/learning/enterprise-agile-changing-your-culture/",
     "https://www.linkedin.com/learning/leading-with-innovation/",
-    "https://www.linkedin.com/learning/time-management-fundamentals-14548057/"
+    "https://www.linkedin.com/learning/time-management-fundamentals-14548057/",
+    "https://www.linkedin.com/learning/paths/master-in-demand-skills-for-technology-leadership"
   ],
   "Low Priority": [
     "https://www.linkedin.com/learning/learning-bash-scripting-17063287/",
     "https://www.linkedin.com/learning/bash-patterns-and-regular-expressions",
     "https://www.linkedin.com/learning/sed-essential-training",
-    "https://www.linkedin.com/learning/awk-essential-training"
+    "https://www.linkedin.com/learning/awk-essential-training",
+    "https://www.linkedin.com/learning/pytorch-essential-training-deep-learning-23753149/",
+    "https://www.linkedin.com/learning/learning-github-advanced-security-for-azure-devops/",
+    "https://www.linkedin.com/learning/paths/become-a-software-developer",
+    "https://www.linkedin.com/learning/paths/develop-your-rust-skills-for-data-engineering",
+    "https://www.linkedin.com/learning/paths/getting-started-as-a-c-sharp-developer",
+    "https://www.linkedin.com/learning/master-c-language-pointers",
+    "https://www.linkedin.com/learning/paths/master-c-plus-plus",
+    "https://www.linkedin.com/learning/advanced-c-programming-optimize-performance-and-efficiency"
   ]
 }
