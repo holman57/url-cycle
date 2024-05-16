@@ -1,0 +1,14 @@
+{
+  "High Priority": ["https://learnsql.com/dashboard/"],
+  "Normal Priority": [
+    "https://www.educative.io/courses/interactive-dashboards-and-data-apps-with-plotly-and-dash",
+    "https://www.educative.io/courses/data-storytelling-through-visualizations-in-python",
+    "https://www.udemy.com/course/exploring-ssrs-creating-great-reports/",
+    "https://www.udemy.com/course/sql-server-reporting-services-part-1-ssrs/",
+    "https://www.linkedin.com/learning/sql-data-reporting-and-analysis-18082247",
+    "https://www.linkedin.com/learning/sql-server-analysis-services/",
+    "https://www.linkedin.com/learning/sql-server-reporting-services/",
+    "https://www.linkedin.com/learning/sql-server-integration-services-2/"
+  ],
+  "Low Priority": []
+}
