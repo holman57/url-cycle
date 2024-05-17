@@ -1,5 +1,9 @@
 {
-  "High Priority": ["https://learnsql.com/dashboard/"],
+  "High Priority": [
+    "https://learnsql.com/dashboard/",
+    "https://leetcode.com/studyplan/top-sql-50/",
+    "https://app.codesignal.com/arcade/db"
+  ],
   "Normal Priority": [
     "https://www.educative.io/courses/interactive-dashboards-and-data-apps-with-plotly-and-dash",
     "https://www.educative.io/courses/data-storytelling-through-visualizations-in-python",
