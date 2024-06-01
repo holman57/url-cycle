@@ -4,9 +4,7 @@
     "https://leetcode.com/studyplan/top-sql-50/",
     "https://app.codesignal.com/",
     "https://learn.acloud.guru/learning-path/cloud-adjacent-devops",
-    "https://learn.acloud.guru/learning-path/azure-architecture",
-    "https://azure.microsoft.com/en-us/get-started/azure-portal",
-    "https://github.com/holman57"
+    "https://learn.acloud.guru/learning-path/azure-architecture"
   ],
   "Normal Priority": [
     "https://www.educative.io/courses/data-storytelling-through-visualizations-in-python",
@@ -98,7 +96,26 @@
     "https://www.udemy.com/course/sql-server-reporting-services-part-1-ssrs/",
     "https://www.udemy.com/course/statistics-probability",
     "https://www.udemy.com/course/the-data-science-course-complete-data-science-bootcamp",
-    "https://www.udemy.com/course/what-is-medical-billing-and-coding"
+    "https://www.udemy.com/course/what-is-medical-billing-and-coding",
+    "https://app.pluralsight.com/paths/skills/estimating-and-forecasting-in-agile-environment",
+    "https://app.pluralsight.com/paths/skills/git",
+    "https://app.pluralsight.com/paths/skills/integration-on-microsoft-azure",
+    "https://app.pluralsight.com/paths/skills/python-exploratory-data-analysis",
+    "https://app.pluralsight.com/paths/skills/python-cleaning-data",
+    "https://app.pluralsight.com/paths/skills/python-pandas-essentials",
+    "https://app.pluralsight.com/paths/skills/python-data-wrangling",
+    "https://app.pluralsight.com/paths/skills/python-advanced-pandas",
+    "https://app.pluralsight.com/paths/skills/python-matplotlib",
+    "https://app.pluralsight.com/paths/skills/building-web-applications-with-flask",
+    "https://app.pluralsight.com/paths/skills/building-machine-learning-solutions-with-scikit-learn",
+    "https://app.pluralsight.com/paths/skills/interpreting-data-with-python",
+    "https://app.pluralsight.com/paths/skill/developing-sql-server-databases",
+    "https://app.pluralsight.com/paths/skill/microsoft-excel-programming",
+    "https://app.pluralsight.com/paths/skill/microsoft-excel-data-manipulation-presentation-and-analysis",
+    "https://app.pluralsight.com/library/courses/time-management-world-interruptions/table-of-contents",
+    "https://app.pluralsight.com/library/courses/time-management-technical-professionals/table-of-contents"
   ],
-  "Low Priority": []
+  "Low Priority": [
+
+  ]
 }
