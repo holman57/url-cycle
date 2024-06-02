@@ -72,13 +72,14 @@ while True:
     random.shuffle(priority3)
     loop_list = priority2 + priority3
     for page in tqdm(loop_list):
-        if i % 4 == 0:
-            if len(priority1) == 0:
-                priority1 = [x for x in data["High Priority"]]
-                random.shuffle(priority1)
-            h += 1
-            random_priority1 = priority1.pop(0)
-            cycle(random_priority1, c, h, i)
+        if len(priority1) > 0:
+            if i % 4 == 0:
+                if len(priority1) == 0:
+                    priority1 = [x for x in data["High Priority"]]
+                    random.shuffle(priority1)
+                h += 1
+                random_priority1 = priority1.pop(0)
+                cycle(random_priority1, c, h, i)
         i += 1
         cycle(page, c, h, i)
     cls()
