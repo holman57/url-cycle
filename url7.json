@@ -7,13 +7,9 @@
     "https://app.codesignal.com/arcade",
     "https://tryhackme.com/",
     "https://leetcode.com/problemset/all/",
-    "https://learnsql.com/dashboard/",
     "https://academy.hackthebox.com/dashboard",
     "https://learn.acloud.guru/learning-path/azure-architecture",
-    "https://learn.acloud.guru/learning-path/cloud-adjacent-devops",
-    "https://app.pluralsight.com/channels/details/521a10b3-3fbe-4fec-a2ea-b9ddcb23d9df",
-    "https://www.linkedin.com/learning/me/my-library/in-progress",
-    "https://www.udemy.com/home/my-courses/learning/?p=9"
+    "https://learn.acloud.guru/learning-path/cloud-adjacent-devops"
   ],
   "Low Priority": [
     "https://app.pluralsight.com/library/courses/flutter-big-picture",
@@ -117,6 +113,7 @@
     "https://www.educative.io/courses/natural-language-processing-ml",
     "https://www.educative.io/path/become-database-professional",
     "https://www.educative.io/path/python-data-analysis",
+    "https://www.educative.io/courses/learn-c-from-scratch",
     "https://www.linkedin.com/learning/paths/prepare-for-the-azure-data-engineer-associate-dp-203-certification",
     "https://www.linkedin.com/learning/paths/prepare-for-the-azure-administrator-az-104-certification-by-microsoft-press",
     "https://www.linkedin.com/learning/paths/prepare-for-the-azure-database-administrator-associate-dp-300-certification",
