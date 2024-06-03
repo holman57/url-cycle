@@ -1,6 +1,5 @@
 {
   "High Priority": [
-
   ],
   "Normal Priority": [
     "https://www.educative.io/module/PM88MlJ17QriZ15MGPx3l8/5864882417434624/5766224995811328",
@@ -11,6 +10,7 @@
     "https://learnsql.com/dashboard/",
     "https://academy.hackthebox.com/dashboard",
     "https://learn.acloud.guru/learning-path/azure-architecture",
+    "https://learn.acloud.guru/learning-path/cloud-adjacent-devops",
     "https://app.pluralsight.com/channels/details/521a10b3-3fbe-4fec-a2ea-b9ddcb23d9df",
     "https://www.linkedin.com/learning/me/my-library/in-progress",
     "https://www.udemy.com/home/my-courses/learning/?p=9"
@@ -86,6 +86,15 @@
     "https://app.pluralsight.com/paths/skills/python-matplotlib",
     "https://app.pluralsight.com/paths/skills/python-pandas-essentials",
     "https://app.pluralsight.com/paths/skills/rust-2021",
+    "https://app.pluralsight.com/paths/skill/cyber-defense-forensic-analyst-or-in-for-002-or-work-role-212",
+    "https://app.pluralsight.com/paths/skill/cyber-defense-incident-responder-or-pr-cir-001-or-work-role-531",
+    "https://app.pluralsight.com/paths/skill/malware-prevention-detection-and-response",
+    "https://app.pluralsight.com/paths/skill/exploit-development",
+    "https://app.pluralsight.com/paths/skill/c-development-fundamentals",
+    "https://app.pluralsight.com/library/courses/cpp-high-performance-computing",
+    "https://app.pluralsight.com/library/courses/javascript-web-assembly-interaction",
+    "https://app.pluralsight.com/paths/skills/malware-analysis",
+    "https://app.pluralsight.com/paths/skill/go",
     "https://learn.acloud.guru/course/124ee946-2249-40c2-a664-aa26af523920",
     "https://learn.acloud.guru/course/7b9017a5-fdb9-40ef-89ee-48da90887b4e",
     "https://learn.acloud.guru/course/a51d0b82-6b77-4800-b49f-a68013bd7d38",
@@ -108,6 +117,13 @@
     "https://www.educative.io/courses/natural-language-processing-ml",
     "https://www.educative.io/path/become-database-professional",
     "https://www.educative.io/path/python-data-analysis",
+    "https://www.linkedin.com/learning/paths/prepare-for-the-azure-data-engineer-associate-dp-203-certification",
+    "https://www.linkedin.com/learning/paths/prepare-for-the-azure-administrator-az-104-certification-by-microsoft-press",
+    "https://www.linkedin.com/learning/paths/prepare-for-the-azure-database-administrator-associate-dp-300-certification",,
+    "https://www.linkedin.com/learning/cisco-certified-cyberops-associate-200-201-cert-prep-3-host-based-analysis",
+    "https://www.linkedin.com/learning/advanced-malware-analysis-redux",
+    "https://www.linkedin.com/learning/paths/wireshark-network-traffic-analysis",
+    "https://www.linkedin.com/learning/ethical-hacking-the-complete-malware-analysis-process",
     "https://www.linkedin.com/learning/executive-decision-making",
     "https://www.linkedin.com/learning/overcoming-obstacles-to-leading-with-confidence",
     "https://www.linkedin.com/learning/academic-research-foundations-quantitative",
@@ -216,6 +232,7 @@
     "https://www.linkedin.com/learning/paths/improve-your-technical-communication-skills",
     "https://www.linkedin.com/learning/paths/master-c-plus-plus",
     "https://www.linkedin.com/learning/paths/advance-your-data-privacy-skills",
+    "https://www.linkedin.com/learning/learning-assembly-language",
     "https://www.udemy.com/course/advanced-css-and-sass",
     "https://www.udemy.com/course/advanced-javascript-concepts",
     "https://www.udemy.com/course/advanced-sql-server-masterclass-for-data-analysis",
