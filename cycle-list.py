@@ -48,6 +48,9 @@ def cycle(url, cycle_iteration, high_priority_items, total_iterations):
         "\n\n\n\t\tPress Any Key...",
     )
     a = wait_key()
+    if a == "c":
+        cls()
+        return
     if a == "\x1b" or a == "q":
         exit(0)
     webbrowser.open(url, new=1, autoraise=True)
