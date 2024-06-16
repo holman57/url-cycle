@@ -6,6 +6,10 @@ import sys
 from tqdm import tqdm
 import json
 import argparse
+if os.name == "nt":
+    import msvcrt
+else:
+    import termios
 
 
 def cls():
@@ -15,12 +19,8 @@ def cls():
 def wait_key():
     result = None
     if os.name == "nt":
-        import msvcrt
-
         result = msvcrt.getwch()
     else:
-        import termios
-
         fd = sys.stdin.fileno()
         old_term = termios.tcgetattr(fd)
         new_attr = termios.tcgetattr(fd)
