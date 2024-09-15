@@ -11,11 +11,21 @@
     "https://learn.acloud.guru/learning-path/azure-architecture",
     "https://learn.acloud.guru/learning-path/cloud-adjacent-devops",
     "https://www.educative.io/module/PM88MlJ17QriZ15MGPx3l8/5864882417434624/5766224995811328",
+    "https://learnsql.com/dashboard",
+    "https://www.hackerrank.com/dashboard",
     "https://www.typing.com/student/lessons"
   ],
   "Normal Priority": [
-    "https://academy.hackthebox.com/dashboard",
-    "https://app.codesignal.com",
+    "https://dev.to",
+    "https://developers.google.com/profile/u/LukeHolman",
+    "https://medium.com",
+    "https://substack.com",
+    "https://www.codewars.com",
+    "https://leetcode.com/problemset/all",
+    "https://leetcode.com/studyplan/top-sql-50",
+    "https://learn.microsoft.com/en-us/training"
+  ],
+  "Low Priority": [
     "https://app.pluralsight.com/channels/details/521a10b3-3fbe-4fec-a2ea-b9ddcb23d9df",
     "https://app.pluralsight.com/library/courses/cpp-high-performance-computing",
     "https://app.pluralsight.com/library/courses/flutter-big-picture",
@@ -97,9 +107,6 @@
     "https://app.pluralsight.com/paths/skills/python-matplotlib",
     "https://app.pluralsight.com/paths/skills/python-pandas-essentials",
     "https://app.pluralsight.com/paths/skills/rust-2021",
-    "https://dev.to",
-    "https://developers.google.com/profile/u/LukeHolman",
-    "https://github.com/holman57",
     "https://learn.acloud.guru/course/124ee946-2249-40c2-a664-aa26af523920",
     "https://learn.acloud.guru/course/5cc4ce26-2b96-40d3-bc5f-602fe9dd5fba",
     "https://learn.acloud.guru/course/6b00566d-6246-4ebe-8257-f98f989321cf",
@@ -124,14 +131,6 @@
     "https://learn.acloud.guru/learning-path/azure-architecture",
     "https://learn.acloud.guru/learning-path/cloud-adjacent-devops",
     "https://learn.acloud.guru/learning-path/cloud-adjacent-security",
-    "https://learn.microsoft.com/en-us/training",
-    "https://learnsql.com/dashboard",
-    "https://leetcode.com/problemset/all",
-    "https://leetcode.com/studyplan/top-sql-50",
-    "https://medium.com",
-    "https://substack.com",
-    "https://tryhackme.com",
-    "https://www.codewars.com",
     "https://www.educative.io/courses/advance-pandas-going-beyond-the-basics",
     "https://www.educative.io/courses/automate-your-network",
     "https://www.educative.io/courses/beginning-flutter-android-mobile-app-development",
@@ -169,9 +168,6 @@
     "https://www.educative.io/path/python-data-analysis",
     "https://www.educative.io/path/spring-boot-development-for-java-programmers",
     "https://www.educative.io/path/test-automation",
-    "https://www.hackerrank.com/dashboard",
-    "https://www.kaggle.com",
-    "https://www.linkedin.com/feed",
     "https://www.linkedin.com/learning/academic-research-foundations-quantitative",
     "https://www.linkedin.com/learning/advanced-c-programming-optimize-performance-and-efficiency",
     "https://www.linkedin.com/learning/advanced-malware-analysis-redux",
@@ -331,9 +327,6 @@
     "https://www.udemy.com/course/the-complete-financial-analyst-course",
     "https://www.udemy.com/course/the-data-science-course-complete-data-science-bootcamp",
     "https://www.udemy.com/course/what-is-medical-billing-and-coding"
-  ],
-  "Low Priority": [
-
   ]
 }
 
