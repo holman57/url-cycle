@@ -73,9 +73,11 @@ while True:
     random.shuffle(priority1)
     random.shuffle(priority2)
     random.shuffle(priority3)
-    loop_list = priority2 + priority3
+    loop_list = priority1 + priority2 + priority3
     for page in tqdm(loop_list):
-        if len(priority1) > 0:
+        if i < len(priority1) - 1:
+            h += 1
+        else:
             if i % 4 == 0:
                 if len(priority1) == 0:
                     priority1 = [x for x in data["High Priority"]]
