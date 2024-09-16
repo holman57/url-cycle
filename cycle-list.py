@@ -62,7 +62,7 @@ while True:
     c += 1
     cls()
     parser = argparse.ArgumentParser(prog="Cycle List", description="!", epilog="_")
-    parser.add_argument("filename")
+    parser.add_argument("filename", default="full.json", nargs='?', type=str, const=1)
     args = parser.parse_args()
     print(args.filename)
     with open(str(args.filename)) as json_file:
