@@ -1,0 +1,37 @@
+{
+  "High Priority": [
+    "https://learn.microsoft.com/en-us/training/paths/windows-server-network-infrastructure",
+    "https://app.pluralsight.com/paths/skill/networking-fundamentals",
+    "https://app.pluralsight.com/paths/skills/windows-server-2022-administration",
+    "https://www.educative.io/courses/grokking-computer-networking",
+    "https://app.pluralsight.com/paths/skill/active-directory-administration",
+    "https://learn.microsoft.com/en-us/training/paths/windows-server-network-infrastructure",
+    "https://academy.hackthebox.com/module/details/34",
+    "https://academy.hackthebox.com/module/details/74",
+    "https://academy.hackthebox.com/module/details/143",
+    "https://www.linkedin.com/learning/paths/networking-and-administration-fundamentals",
+    "https://www.linkedin.com/learning/paths/the-top-skills-it-professionals-have-right-now",
+    "https://www.linkedin.com/learning/introduction-to-it-asset-management-itam",
+    "https://www.linkedin.com/learning/enterprise-architecture-in-practice",
+    "https://app.pluralsight.com/paths/skill/security-champion-for-it-admins",
+    "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:1381d8a4-892d-4557-b4dc-52204db51eec"
+  ],
+  "Normal Priority": [
+    "https://www.linkedin.com/learning/netops-devops-for-network-engineers-automating-networks",
+    "https://www.linkedin.com/learning/paths/network-administration-build-core-skills-for-network-management-and-security",
+    "https://www.linkedin.com/learning/paths/essential-new-skills-in-it-administration",
+    "https://www.linkedin.com/learning/paths/explore-a-career-in-it-support",
+    "https://app.pluralsight.com/paths/skill/active-directory-and-entra-id-administration",
+    "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:b82eaf53-f975-4026-9d12-26df492e442a"
+  ],
+  "Low Priority": [
+    "https://www.linkedin.com/learning/paths/master-in-demand-skills-for-technology-leadership",
+    "https://app.pluralsight.com/paths/skill/leadership-and-facilitation-for-business-analysts",
+    "https://app.pluralsight.com/paths/skill/emotional-intelligence-for-leaders-and-managers",
+    "https://app.pluralsight.com/library/courses/time-management-technical-professionals/table-of-contents",
+    "https://app.pluralsight.com/paths/skill/building-reports-with-microsoft-ssrs",
+    "https://www.udemy.com/course/sql-server-reporting-services-part-1-ssrs",
+    "https://www.udemy.com/course/sql-server-reporting-services-part-2-ssrs",
+    "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:a12836cd-3440-4c01-a763-36ba75f9e0b6"
+  ]
+}
