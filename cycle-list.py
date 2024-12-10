@@ -13,8 +13,8 @@ else:
 
 
 parser = argparse.ArgumentParser(prog="Cycle List", description="!", epilog="_")
-parser.add_argument("--filename", default="full.json", nargs='?', type=str, const=1)
-parser.add_argument("--priority", default=0, nargs='?', type=int, const=1)
+parser.add_argument("-f", "--filename", default="full.json", nargs='?', type=str, const=1)
+parser.add_argument("-p", "--priority", default=0, nargs='?', type=int, const=1)
 args = parser.parse_args()
 
 
