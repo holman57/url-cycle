@@ -1,8 +1,9 @@
 {
   "High Priority": [
+    "https://app.pluralsight.com/paths/skill/windows-server-2022-administration",
+    "https://app.pluralsight.com/paths/skill/windows-11-desktop-administration-fundamentals",
     "https://learn.microsoft.com/en-us/training/paths/windows-server-network-infrastructure",
     "https://app.pluralsight.com/paths/skill/networking-fundamentals",
-    "https://app.pluralsight.com/paths/skills/windows-server-2022-administration",
     "https://www.educative.io/courses/grokking-computer-networking",
     "https://app.pluralsight.com/paths/skill/active-directory-administration",
     "https://learn.microsoft.com/en-us/training/paths/windows-server-network-infrastructure",
@@ -17,6 +18,7 @@
     "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:1381d8a4-892d-4557-b4dc-52204db51eec"
   ],
   "Normal Priority": [
+    "https://app.pluralsight.com/paths/certificate/comptia-network-n10-009",
     "https://www.linkedin.com/learning/netops-devops-for-network-engineers-automating-networks",
     "https://www.linkedin.com/learning/paths/network-administration-build-core-skills-for-network-management-and-security",
     "https://www.linkedin.com/learning/paths/essential-new-skills-in-it-administration",
@@ -25,6 +27,20 @@
     "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:b82eaf53-f975-4026-9d12-26df492e442a"
   ],
   "Low Priority": [
+    "https://www.linkedin.com/learning/microsoft-entra-id-for-administrators",
+    "https://www.linkedin.com/learning/advanced-pen-testing-techniques-for-active-directory",
+    "https://www.linkedin.com/learning/windows-server-2022-implementing-group-policy",
+    "https://www.linkedin.com/learning/advanced-powershell-automating-active-directory-administration",
+    "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:12e07354-f68a-4b6c-8505-188894cdc294",
+    "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:2fcac8da-4bc2-4f95-b28d-03bc97061019",
+    "https://learn.microsoft.com/en-us/training/paths/windows-server-deployment-configuration-administration/",
+    "https://learn.microsoft.com/en-us/training/paths/maintain-system-administration-tasks-windows-powershell/",
+    "https://learn.microsoft.com/en-us/training/modules/manage-single-multiple-computers-use-windows-powershell-remoting/",
+    "https://learn.microsoft.com/en-us/training/paths/work-windows-powershell-pipeline/",
+    "https://learn.microsoft.com/en-us/training/paths/manage-microsoft-365-services-use-windows-powershell/",
+    "https://learn.microsoft.com/en-us/training/paths/administer-remote-computers-use-windows-powershell/",
+    "https://www.educative.io/courses/automate-your-network",
+    "https://www.linkedin.com/learning/paths/explore-a-career-in-it-support",
     "https://www.linkedin.com/learning/paths/master-in-demand-skills-for-technology-leadership",
     "https://app.pluralsight.com/paths/skill/leadership-and-facilitation-for-business-analysts",
     "https://app.pluralsight.com/paths/skill/emotional-intelligence-for-leaders-and-managers",
