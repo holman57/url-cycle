@@ -12,7 +12,13 @@ else:
     import termios
 
 
-parser = argparse.ArgumentParser(prog="Cycle List", description="!", epilog="_")
+parser = argparse.ArgumentParser(
+    prog="Cycle List",
+    description="A script that cycles through items in a list. It takes a list of items as input and prints each "
+                "item in the list repeatedly, cycling back to the beginning once it reaches the end. The script can "
+                "be controlled using command-line arguments to specify the number of cycles, delay between printing "
+                "items, and other options."
+)
 parser.add_argument("-f", "--filename", default="full.json", nargs='?', type=str, const=1)
 parser.add_argument("-p", "--priority", default=0, nargs='?', type=int, const=1)
 args = parser.parse_args()
