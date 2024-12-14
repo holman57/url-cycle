@@ -1,7 +1,6 @@
 {
   "High Priority": [
     "https://app.pluralsight.com/paths/skill/windows-server-2022-administration",
-    "https://app.pluralsight.com/paths/skill/windows-11-desktop-administration-fundamentals",
     "https://learn.microsoft.com/en-us/training/paths/windows-server-network-infrastructure",
     "https://app.pluralsight.com/paths/skill/networking-fundamentals",
     "https://www.educative.io/courses/grokking-computer-networking",
@@ -10,12 +9,23 @@
     "https://academy.hackthebox.com/module/details/34",
     "https://academy.hackthebox.com/module/details/74",
     "https://academy.hackthebox.com/module/details/143",
+    "https://tryhackme.com/r/path/outline/blueteam",
+    "https://app.pluralsight.com/paths/certificate/okta-certified-professional",
+    "https://www.youtube.com/playlist?list=PL1mL90yFExsiR-qLk5Sv-g_bH-w53ObUS",
+    "https://app.pluralsight.com/paths/skill/microsoft-endpoint-manager-a-comprehensive-guide-to-mecm-and-intune",
     "https://www.linkedin.com/learning/paths/networking-and-administration-fundamentals",
     "https://www.linkedin.com/learning/paths/the-top-skills-it-professionals-have-right-now",
     "https://www.linkedin.com/learning/introduction-to-it-asset-management-itam",
     "https://www.linkedin.com/learning/enterprise-architecture-in-practice",
     "https://app.pluralsight.com/paths/skill/security-champion-for-it-admins",
-    "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:1381d8a4-892d-4557-b4dc-52204db51eec"
+    "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:1381d8a4-892d-4557-b4dc-52204db51eec",
+    "https://www.linkedin.com/learning/powershell-for-exchange-administration",
+    "https://www.linkedin.com/learning/powershell-scripting-for-advanced-automation",
+    "https://www.linkedin.com/learning/powershell-scripting-for-server-administration",
+    "https://app.pluralsight.com/paths/skill/powershell-7-fundamentals",
+    "https://app.pluralsight.com/paths/skill/powershell-scripting-and-toolmaking",
+    "https://app.pluralsight.com/paths/skill/powershell-for-cyber-defense",
+    "https://www.linkedin.com/learning/advanced-powershell-automating-active-directory-administration"
   ],
   "Normal Priority": [
     "https://www.linkedin.com/learning/improving-technical-project-success-with-change-management",
@@ -28,15 +38,10 @@
     "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:b82eaf53-f975-4026-9d12-26df492e442a"
   ],
   "Low Priority": [
-    "https://www.linkedin.com/learning/powershell-for-exchange-administration",
-    "https://www.linkedin.com/learning/powershell-scripting-for-advanced-automation",
-    "https://www.linkedin.com/learning/powershell-scripting-for-server-administration",
-    "https://app.pluralsight.com/paths/skill/powershell-7-fundamentals",
-    "https://app.pluralsight.com/paths/skill/powershell-scripting-and-toolmaking",
     "https://www.linkedin.com/learning/microsoft-entra-id-for-administrators",
     "https://www.linkedin.com/learning/advanced-pen-testing-techniques-for-active-directory",
     "https://www.linkedin.com/learning/windows-server-2022-implementing-group-policy",
-    "https://www.linkedin.com/learning/advanced-powershell-automating-active-directory-administration",
+    "https://app.pluralsight.com/paths/skill/windows-11-desktop-administration-fundamentals",
     "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:12e07354-f68a-4b6c-8505-188894cdc294",
     "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:2fcac8da-4bc2-4f95-b28d-03bc97061019",
     "https://learn.microsoft.com/en-us/training/paths/windows-server-deployment-configuration-administration/",
@@ -54,6 +59,10 @@
     "https://app.pluralsight.com/paths/skill/building-reports-with-microsoft-ssrs",
     "https://www.udemy.com/course/sql-server-reporting-services-part-1-ssrs",
     "https://www.udemy.com/course/sql-server-reporting-services-part-2-ssrs",
-    "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:a12836cd-3440-4c01-a763-36ba75f9e0b6"
+    "https://academy.hackthebox.com/module/details/19",
+    "https://academy.hackthebox.com/module/details/81",
+    "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:a12836cd-3440-4c01-a763-36ba75f9e0b6",
+    "https://app.pluralsight.com/paths/skill/windows-11-troubleshooting",
+    "https://www.linkedin.com/learning/cisco-certified-cyberops-associate-200-201-cert-prep-3-host-based-analysis"
   ]
 }
