@@ -1,22 +1,6 @@
 
 {
   "High Priority": [
-    "https://learnsql.com/dashboard",
-    "https://app.pluralsight.com/paths/skills/powershell-7-fundamentals",
-    "https://leetcode.com/studyplan/top-sql-50"
-  ],
-  "Normal Priority": [
-    "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:1381d8a4-892d-4557-b4dc-52204db51eec",
-    "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:d993ef1d-db34-4e4d-a88f-7ef71ba0e0a0",
-    "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:66009f6f-ab47-4e99-8b8f-0589647685d2",
-    "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:e166888d-c055-4932-b981-5b5440e85f3e",
-    "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:e9fe0e5d-d847-454a-b1c7-de359272cbd4",
-    "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:b82eaf53-f975-4026-9d12-26df492e442a",
-    "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:12e07354-f68a-4b6c-8505-188894cdc294",
-    "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:2fcac8da-4bc2-4f95-b28d-03bc97061019",
-    "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:a12836cd-3440-4c01-a763-36ba75f9e0b6"
-  ],
-  "Low Priority": [
     "https://app.pluralsight.com/library/courses/microsoft-azure-microsoft-graph-app-service-integrating",
     "https://app.pluralsight.com/library/courses/microsoft-azure-enterprise-messaging-eventing",
     "https://app.pluralsight.com/library/courses/az-204-developing-solutions-microsoft-azure",
@@ -36,6 +20,20 @@
     "https://app.pluralsight.com/paths/certificate/ms-900-microsoft-365-fundamentals",
     "https://www.linkedin.com/learning/using-microsoft-teams-and-outlook-together-maximizing-productivity-24380887",
     "https://www.linkedin.com/learning/modern-project-management-in-microsoft-365"
+  ],
+  "Normal Priority": [
+    "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:1381d8a4-892d-4557-b4dc-52204db51eec",
+    "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:d993ef1d-db34-4e4d-a88f-7ef71ba0e0a0",
+    "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:66009f6f-ab47-4e99-8b8f-0589647685d2",
+    "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:e166888d-c055-4932-b981-5b5440e85f3e",
+    "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:e9fe0e5d-d847-454a-b1c7-de359272cbd4",
+    "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:b82eaf53-f975-4026-9d12-26df492e442a",
+    "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:12e07354-f68a-4b6c-8505-188894cdc294",
+    "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:2fcac8da-4bc2-4f95-b28d-03bc97061019",
+    "https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:a12836cd-3440-4c01-a763-36ba75f9e0b6"
+  ],
+  "Low Priority": [
+
   ]
 }
 
