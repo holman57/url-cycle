@@ -47,6 +47,14 @@ def wait_key():
     return result
 
 
+def remove_random_elements(arr, percentage):
+    num_elements_to_remove = int(len(arr) * percentage / 100)
+    indices_to_remove = random.sample(range(len(arr)), num_elements_to_remove)
+    for index in sorted(indices_to_remove, reverse=True):
+        del arr[index]
+    return arr
+
+
 def cycle(url, cycle_iteration, high_priority_items, total_iterations):
     if args.priority == 0:
         print(
@@ -84,6 +92,9 @@ while True:
     random.shuffle(priority1)
     random.shuffle(priority2)
     random.shuffle(priority3)
+    priority1 = remove_random_elements(priority1, 10)
+    priority2 = remove_random_elements(priority2, 50)
+    priority3 = remove_random_elements(priority3, 75)
     loop_list = []
     if args.priority == 1:
         loop_list = priority1
@@ -98,10 +109,11 @@ while True:
             if i < len(priority1) - 1:
                 h += 1
             else:
-                if i % 4 == 0:
+                if i % random.randint(4, 12) == 0:
                     if len(priority1) == 0:
                         priority1 = [x for x in data["High Priority"]]
                         random.shuffle(priority1)
+                        priority1 = remove_random_elements(priority1, 10)
                     h += 1
                     random_priority1 = priority1.pop(0)
                     cycle(random_priority1, c, h, i)
