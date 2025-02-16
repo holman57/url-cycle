@@ -92,8 +92,8 @@ while True:
     random.shuffle(priority1)
     random.shuffle(priority2)
     random.shuffle(priority3)
-    priority1 = remove_random_elements(priority1, 30)
-    priority2 = remove_random_elements(priority2, 70)
+    priority1 = remove_random_elements(priority1, 20)
+    priority2 = remove_random_elements(priority2, 50)
     priority3 = remove_random_elements(priority3, 96)
     loop_list = []
     if args.priority == 1:
@@ -104,6 +104,7 @@ while True:
         loop_list = priority3
     else:
         loop_list = priority1 + priority2 + priority3
+    remove_random_elements(loop_list, 40)
     for page in tqdm(loop_list):
         if args.priority == 0:
             if i < len(priority1) - 1:
