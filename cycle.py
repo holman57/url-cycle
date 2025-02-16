@@ -92,9 +92,9 @@ while True:
     random.shuffle(priority1)
     random.shuffle(priority2)
     random.shuffle(priority3)
-    priority1 = remove_random_elements(priority1, 10)
-    priority2 = remove_random_elements(priority2, 50)
-    priority3 = remove_random_elements(priority3, 75)
+    priority1 = remove_random_elements(priority1, 30)
+    priority2 = remove_random_elements(priority2, 70)
+    priority3 = remove_random_elements(priority3, 96)
     loop_list = []
     if args.priority == 1:
         loop_list = priority1
@@ -113,7 +113,6 @@ while True:
                     if len(priority1) == 0:
                         priority1 = [x for x in data["High Priority"]]
                         random.shuffle(priority1)
-                        priority1 = remove_random_elements(priority1, 10)
                     h += 1
                     random_priority1 = priority1.pop(0)
                     cycle(random_priority1, c, h, i)
