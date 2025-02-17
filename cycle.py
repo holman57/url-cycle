@@ -21,6 +21,8 @@ parser = argparse.ArgumentParser(
 )
 parser.add_argument("-f", "--filename", default="full.json", nargs='?', type=str, const=1)
 parser.add_argument("-p", "--priority", default=0, nargs='?', type=int, const=1)
+parser.add_argument("-s", "--size", default=50, nargs='?', type=int, const=1)
+
 args = parser.parse_args()
 
 
@@ -104,13 +106,13 @@ while True:
         loop_list = priority3
     else:
         loop_list = priority1 + priority2 + priority3
-    remove_random_elements(loop_list, 40)
+    remove_random_elements(loop_list, args.size)
     for page in tqdm(loop_list):
         if args.priority == 0:
             if i < len(priority1) - 1:
                 h += 1
             else:
-                if i % random.randint(4, 12) == 0:
+                if i % random.randint(3, 15) == 0:
                     if len(priority1) == 0:
                         priority1 = [x for x in data["High Priority"]]
                         random.shuffle(priority1)
