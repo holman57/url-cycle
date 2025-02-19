@@ -25,6 +25,8 @@ parser.add_argument("-s", "--size", default=50, nargs='?', type=int, const=1)
 
 args = parser.parse_args()
 
+previous = ["Start of the Cycle"]
+
 
 def cls():
     os.system("cls" if os.name == "nt" else "clear")
@@ -70,9 +72,12 @@ def cycle(url, cycle_iteration, high_priority_items, total_iterations):
         total_iterations,
         "\n\n\t",
         url,
+        "\n\n\t",
+        previous[-1],
         "\n\n\n\t\tPress Any Key...",
     )
     a = wait_key()
+    previous.append(url)
     if a == "c":
         cls()
         return
@@ -80,6 +85,7 @@ def cycle(url, cycle_iteration, high_priority_items, total_iterations):
         exit(0)
     webbrowser.open(url, new=1, autoraise=True)
     cls()
+    time.sleep(1)
 
 
 c, h, i = 0, 0, 0
