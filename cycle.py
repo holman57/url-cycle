@@ -15,17 +15,17 @@ else:
 parser = argparse.ArgumentParser(
     prog="Cycle List",
     description="A script that cycles through items in a list. It takes a list of items as input and prints each "
-                "item in the list repeatedly, cycling back to the beginning once it reaches the end. The script can "
-                "be controlled using command-line arguments to specify the number of cycles, delay between printing "
-                "items, and other options."
+                "item in the list repeatedly, cycling back to the beginning once it reaches the end. It also "
+                "supports a size parameter to limit the number of items to cycle through. Items in the list are "
+                "shuffled randomly depending on which priority bucket they belong to."
 )
-parser.add_argument("-f", "--filename", default="full.json", nargs='?', type=str, const=1)
-parser.add_argument("-p", "--priority", default=0, nargs='?', type=int, const=1)
-parser.add_argument("-s", "--size", default=50, nargs='?', type=int, const=1)
+parser.add_argument("-f", "--filename", default="integration.json", nargs='?', type=str, const=1)
+parser.add_argument("-s", "--size", default=83, nargs='?', type=int, const=1)
 
 args = parser.parse_args()
 
-previous = ["Start of the Cycle"]
+previous = ["", ""]
+start = time.time()
 
 
 def cls():
@@ -59,22 +59,34 @@ def remove_random_elements(arr, percentage):
     return arr
 
 
-def cycle(url, cycle_iteration, high_priority_items, total_iterations):
-    if args.priority == 0:
-        print(
-            "\n\n\t\t\t     High Priority Items:",
-            high_priority_items
-        )
+def cycle(
+    url,
+    cycle_iteration,
+    high_priority_items,
+    normal_priority_items,
+    low_priority_items,
+    total_iterations
+):
+    elapsed_time = time.time() - start
+    if elapsed_time < 60:
+        display_time = f"{elapsed_time:.2f} seconds"
+    elif elapsed_time < 3600:
+        display_time = f"{elapsed_time / 60:.2f} minutes"
+    else:
+        display_time = f"{elapsed_time / 3600:.2f} hours"
     print(
-        "\n\tcycle:",
-        cycle_iteration,
-        "\t\tTotal Iterations:",
-        total_iterations,
-        "\n\n\t",
-        url,
-        "\n\n\t",
-        previous[-1],
-        "\n\n\n\t\tPress Any Key...",
+        "\nstart", time.ctime(start), "\n",
+        "\n  elapsed:", display_time,
+        "\n\n  High:", high_priority_items,
+        "  Normal:", normal_priority_items,
+        "   Low:", low_priority_items,
+        "\n\n  cycle:", cycle_iteration,
+        "  iterations:", total_iterations,
+        "\n\n\t up next: ", url,
+        "\n\n\t current: ", previous[-1],
+        "\n\n\t    prev: ", previous[-2],
+        "\n\n  Press 'q' to quit."
+        "\n\n  Press Any Key to Open...",
     )
     a = wait_key()
     previous.append(url)
@@ -84,53 +96,36 @@ def cycle(url, cycle_iteration, high_priority_items, total_iterations):
     if a == "\x1b" or a == "q":
         exit(0)
     webbrowser.open(url, new=1, autoraise=True)
-    cls()
     time.sleep(1)
+    cls()
 
 
-c, h, i = 0, 0, 0
+c, h, n, l, i = 0, 0, 0, 0, 0
 while True:
     c += 1
     cls()
     with open(str(args.filename)) as json_file:
         data = json.load(json_file)
-    priority1 = [x for x in data["High Priority"]]
-    priority2 = [x for x in data["Normal Priority"]]
-    priority3 = [x for x in data["Low Priority"]]
+    priority1 = [[x, 'High'] for x in data["High Priority"]]
+    priority2 = [[x, 'Normal'] for x in data["Normal Priority"]]
+    priority3 = [[x, 'Low'] for x in data["Low Priority"]]
     random.shuffle(priority1)
     random.shuffle(priority2)
     random.shuffle(priority3)
     priority1 = remove_random_elements(priority1, 60)
     priority2 = remove_random_elements(priority2, 60)
-    priority3 = remove_random_elements(priority3, 96)
-    loop_list = []
-    if args.priority == 1:
-        loop_list = priority1
-    elif args.priority == 2:
-        loop_list = priority2
-    elif args.priority == 3:
-        loop_list = priority3
-    else:
-        loop_list = priority1 + priority2 + priority3
+    priority3 = remove_random_elements(priority3, 95)
+    loop_list = priority1 + priority2 + priority3
+    random.shuffle(loop_list)
     remove_random_elements(loop_list, args.size)
     for page in tqdm(loop_list):
-        if args.priority == 0:
-            if i < len(priority1) - 1:
-                h += 1
-            else:
-                if i % random.randint(3, 15) == 0:
-                    if len(priority1) == 0:
-                        priority1 = [x for x in data["High Priority"]]
-                        random.shuffle(priority1)
-                    h += 1
-                    random_priority1 = priority1.pop(0)
-                    cycle(random_priority1, c, h, i)
+        if page[1] == 'High': h += 1
+        if page[1] == 'Normal': n += 1
+        if page[1] == 'Low': l += 1
         i += 1
-        cycle(page, c, h, i)
+        cycle(page[0], c, h, n, l, i)
     cls()
     print()
     print("\t\t\aCycle Complete!")
     time.sleep(2)
-
-
 
