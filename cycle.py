@@ -100,8 +100,8 @@ while True:
     random.shuffle(priority1)
     random.shuffle(priority2)
     random.shuffle(priority3)
-    priority1 = remove_random_elements(priority1, 20)
-    priority2 = remove_random_elements(priority2, 50)
+    priority1 = remove_random_elements(priority1, 60)
+    priority2 = remove_random_elements(priority2, 60)
     priority3 = remove_random_elements(priority3, 96)
     loop_list = []
     if args.priority == 1:
