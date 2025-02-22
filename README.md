@@ -62,11 +62,11 @@ pip install -r requirements.txt
 2. **Run the Script:**
    - Execute the script using the following command:
      ```bash
-     python url_cycle.py --filename url.json --size 86
+     python cycle.py --filename url.json --size 86
      ```
      or
      ```bash
-     python url_cycle.py --filename url.yaml --size 86
+     python cycle.py --filename url.yaml --size 86
      ```
 
 3. **Control the Cycling:**
@@ -95,10 +95,12 @@ An example of how the JSON file could look:
     "http://anothernormalexample.com"
   ],
   "Low Priority": [
-    "http://lowpriorityexample.com"
+    "http://lowpriorityexample.com",
+    "http://www.anotherlowexample.com"
   ],
   "Extra": [
-    "http://extraexample.com"
+    "http://extraexample.com",
+    "http://extraextraexample.com"
   ]
 }
 ```
