@@ -82,7 +82,6 @@ def cycle(
         "   Normal:", normal_priority_items,
         "   Low:", low_priority_items,
         "   Extra:", extra_items,
-        "   Total:", high_priority_items + normal_priority_items + low_priority_items + extra_items,
         "\n\n  cycle:", cycle_iteration,
         "  iterations:", total_iterations,
         "\n\n\t up next: ", url,
