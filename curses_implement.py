@@ -16,14 +16,15 @@ def background_update(stdscr):
         if elapsed_time < 60:
             display_time = f"{elapsed_time:.2f} s"
         elif elapsed_time < 3600:
-            display_time = f"{elapsed_time / 60:.2f} m"
+            display_time = f"{int(elapsed_time / 60)}:{int(elapsed_time % 60):02} m"
         else:
             display_time = f"{elapsed_time / 3600:.2f} h"
 
         stdscr.addstr(0, 0, "████ ██")
         stdscr.addstr(1, 0,
             f" ┌─────────────┐\n"
-            f" │ {display_time}"
+            f" │ {display_time}\n"
+            f" └─────────────┘"
         )
         stdscr.addstr(2, 15, "│")
 
