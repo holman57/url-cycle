@@ -72,9 +72,9 @@ def cycle(
     if elapsed_time < 60:
         display_time = f"{elapsed_time:.2f} seconds"
     elif 3600 > elapsed_time > 60:
-        display_time = f"{int(elapsed_time / 60)}:{int(elapsed_time % 60):02} minutes"
+        display_time = f"{int(elapsed_time // 60)}:{int(elapsed_time % 60):02} minutes"
     else:
-        display_time = f"{int(elapsed_time / 3600)}:{int(elapsed_time % 3600 / 60):02}:{int(elapsed_time % 60):02} hours"
+        display_time = f"{int(elapsed_time // 3600)}:{int((elapsed_time % 3600) // 60):02}:{int(elapsed_time % 60):02} hours"
     print(
         "\nstart", time.ctime(start), "\n",
         "\n  elapsed:", display_time,
