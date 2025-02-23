@@ -20,7 +20,7 @@ parser = argparse.ArgumentParser(
                 "shuffled randomly depending on which priority bucket they belong to."
 )
 parser.add_argument("-f", "--filename", default="url.json", nargs='?', type=str, const=1)
-parser.add_argument("-s", "--size", default=86, nargs='?', type=int, const=1)
+parser.add_argument("-s", "--size", default=90, nargs='?', type=int, const=1)
 
 args = parser.parse_args()
 
@@ -114,9 +114,9 @@ while True:
     random.shuffle(priority1)
     random.shuffle(priority2)
     random.shuffle(priority3)
-    priority1 = remove_random_elements(priority1, 60)
-    priority2 = remove_random_elements(priority2, 60)
-    priority3 = remove_random_elements(priority3, 95)
+    priority1 = remove_random_elements(priority1, 50)
+    priority2 = remove_random_elements(priority2, 50)
+    priority3 = remove_random_elements(priority3, 92)
     loop_list = priority1 + priority2 + priority3
     remove_random_elements(loop_list, args.size)
     loop_list += [[random.choice(data["Extra"]), "Extra"]]
