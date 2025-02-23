@@ -116,7 +116,7 @@ while True:
     random.shuffle(priority3)
     priority1 = remove_random_elements(priority1, 50)
     priority2 = remove_random_elements(priority2, 50)
-    priority3 = remove_random_elements(priority3, 92)
+    priority3 = remove_random_elements(priority3, 90)
     loop_list = priority1 + priority2 + priority3
     remove_random_elements(loop_list, args.size)
     loop_list += [[random.choice(data["Extra"]), "Extra"]]
