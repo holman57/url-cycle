@@ -20,7 +20,7 @@ parser = argparse.ArgumentParser(
                 "shuffled randomly depending on which priority bucket they belong to."
 )
 parser.add_argument("-f", "--filename", default="url.json", nargs='?', type=str, const=1)
-parser.add_argument("-s", "--size", default=90, nargs='?', type=int, const=1)
+parser.add_argument("-s", "--size", default=92, nargs='?', type=int, const=1)
 
 args = parser.parse_args()
 
