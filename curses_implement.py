@@ -27,6 +27,7 @@ def background_update(stdscr):
             f" └─────────────┘"
         )
         stdscr.addstr(2, 15, "│")
+        stdscr.addstr(4, 2, f"start {time.ctime(start_time)}")
 
         height, width = stdscr.getmaxyx()
         stdscr.addstr(7, 1, f"Screen width: {width}, height: {height}")
