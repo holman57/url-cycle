@@ -28,8 +28,11 @@ def background_update(stdscr):
             f" └─────────────┘"
         )
         stdscr.addstr(4, 15, "│")
+
         stdscr.addstr(7, 2, f"High:")
-        stdscr.addstr(9, 2, f"cycle:")
+        stdscr.addstr(7, 14, f"Normal:")
+        stdscr.addstr(7, 29, f"Low:")
+        stdscr.addstr(7, 40, f"Extra:")
 
         height, width = stdscr.getmaxyx()
         stdscr.addstr(15, 1, f"Screen width: {width}, height: {height}")
