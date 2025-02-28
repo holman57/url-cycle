@@ -21,16 +21,18 @@ def background_update(stdscr):
             display_time = f"{elapsed_time / 3600:.2f} h"
 
         stdscr.addstr(0, 0, "████ ██")
-        stdscr.addstr(1, 0,
+        stdscr.addstr(1, 2, f"start: {time.ctime(start_time)}")
+        stdscr.addstr(3, 0,
             f" ┌─────────────┐\n"
             f" │ {display_time}\n"
             f" └─────────────┘"
         )
-        stdscr.addstr(2, 15, "│")
-        stdscr.addstr(4, 2, f"start {time.ctime(start_time)}")
+        stdscr.addstr(4, 15, "│")
+        stdscr.addstr(7, 2, f"High:")
+        stdscr.addstr(9, 2, f"cycle:")
 
         height, width = stdscr.getmaxyx()
-        stdscr.addstr(7, 1, f"Screen width: {width}, height: {height}")
+        stdscr.addstr(15, 1, f"Screen width: {width}, height: {height}")
 
         stdscr.refresh()
         time.sleep(0.01)
