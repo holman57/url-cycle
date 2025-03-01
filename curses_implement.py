@@ -29,13 +29,23 @@ def background_update(stdscr):
         )
         stdscr.addstr(4, 15, "│")
 
-        stdscr.addstr(7, 2, f"High:")
-        stdscr.addstr(7, 14, f"Normal:")
-        stdscr.addstr(7, 29, f"Low:")
-        stdscr.addstr(7, 40, f"Extra:")
+        stdscr.addstr(7, 3, f"High:")
+        stdscr.addstr(7, 15, f"Normal:")
+        stdscr.addstr(7, 30, f"Low:")
+        stdscr.addstr(7, 41, f"Extra:")
+
+        stdscr.addstr(9, 3, f"cycle:")
+        stdscr.addstr(9, 15, f"iterations:")
+
+        stdscr.addstr(11, 11, f"up next:")
+        stdscr.addstr(13, 11, f"current:")
+        stdscr.addstr(15, 14, f"prev:")
+
+        stdscr.addstr(17, 3, "Press 'q' to quit.")
+        stdscr.addstr(19, 3, "Press Any Key to Open...")
 
         height, width = stdscr.getmaxyx()
-        stdscr.addstr(15, 1, f"Screen width: {width}, height: {height}")
+        stdscr.addstr(25, 1, f"Screen width: {width}, height: {height}")
 
         stdscr.refresh()
         time.sleep(0.01)
