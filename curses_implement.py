@@ -25,6 +25,7 @@ args = parser.parse_args()
 
 def background_update(
     stdscr,
+    history,
     url,
     cycle_iteration,
     high_priority_items,
@@ -35,7 +36,6 @@ def background_update(
 ):
     start_time = time.time()
     while True:
-        # stdscr.clear()
         stdscr.erase()
         elapsed_time = time.time() - start_time
         if elapsed_time < 60:
@@ -54,17 +54,17 @@ def background_update(
         )
         stdscr.addstr(4, 15, "│")
 
-        stdscr.addstr(7, 3, f"High:")
-        stdscr.addstr(7, 15, f"Normal:")
-        stdscr.addstr(7, 30, f"Low:")
-        stdscr.addstr(7, 41, f"Extra:")
+        stdscr.addstr(7, 3, f"High: {high_priority_items}")
+        stdscr.addstr(7, 15, f"Normal: {normal_priority_items}")
+        stdscr.addstr(7, 30, f"Low: {low_priority_items}")
+        stdscr.addstr(7, 41, f"Extra: {extra_items}")
 
-        stdscr.addstr(9, 3, f"cycle:")
-        stdscr.addstr(9, 15, f"iterations:")
+        stdscr.addstr(9, 3, f"cycle: {cycle_iteration}")
+        stdscr.addstr(9, 15, f"iterations: {total_iterations}")
 
-        stdscr.addstr(11, 11, f"up next:")
-        stdscr.addstr(13, 11, f"current:")
-        stdscr.addstr(15, 14, f"prev:")
+        stdscr.addstr(11, 11, f"up next: {url}")
+        stdscr.addstr(13, 11, f"current: {history[-1]}")
+        stdscr.addstr(15, 14, f"prev: {history[-2]}")
 
         stdscr.addstr(17, 3, "Press 'q' to quit.")
         stdscr.addstr(19, 3, "Press Any Key to Open...")
@@ -87,7 +87,12 @@ def remove_random_elements(arr, percentage):
 def main(stdscr):
     c, h, n, l, i, e = 0, 0, 0, 0, 0, 0
     page = None
-    update_thread = threading.Thread(target=background_update, args=(stdscr, page, c, h, n, l, e, i), daemon=True)
+    history = [" ", " "]
+    update_thread = threading.Thread(
+        target=background_update,
+        args=(stdscr, history, page, c, h, n, l, e, i),
+        daemon=True
+    )
     update_thread.start()
     try:
         while True:
