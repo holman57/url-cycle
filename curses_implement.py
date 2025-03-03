@@ -28,6 +28,7 @@ args = parser.parse_args()
 def background_update(
     stdscr,
     history,
+    percentage_remaining,
     cycle_iteration,
     high_priority_items,
     normal_priority_items,
@@ -70,6 +71,9 @@ def background_update(
         stdscr.addstr(17, 3, "Press 'q' to quit.")
         stdscr.addstr(19, 3, "Press Any Key to Open...")
 
+        height, width = stdscr.getmaxyx()
+        stdscr.addstr(height - 5, 1, f"Remaining: {percentage_remaining:.2f}%")
+
         stdscr.refresh()
         time.sleep(0.01)
 
@@ -84,11 +88,11 @@ def remove_random_elements(arr, percentage):
 
 def main(stdscr):
     c, h, n, l, i, e = 0, 0, 0, 0, 0, 0
-    page = None
+    percentage_remaining = 0
     history = [" ", " ", " "]
     update_thread = threading.Thread(
         target=background_update,
-        args=(stdscr, history, c, h, n, l, e, i),
+        args=(stdscr, history, percentage_remaining, c, h, n, l, e, i),
         daemon=True
     )
     update_thread.start()
@@ -112,7 +116,10 @@ def main(stdscr):
             remove_random_elements(loop_list, args.size)
             loop_list += [[random.choice(data["Extra"]), "Extra"]]
             random.shuffle(loop_list)
-            for page in loop_list:
+            total_pages = len(loop_list)
+            for i, page in enumerate(loop_list):
+                remaining_pages = total_pages - (i + 1)
+                percentage_remaining = (remaining_pages / total_pages) * 100
                 history.append(page[0])
                 if page[1] == 'High': h += 1
                 if page[1] == 'Normal': n += 1
