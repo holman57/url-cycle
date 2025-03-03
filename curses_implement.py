@@ -1,5 +1,6 @@
 import time
 import threading
+import webbrowser
 import argparse
 import random
 import json
@@ -27,7 +28,6 @@ args = parser.parse_args()
 def background_update(
     stdscr,
     history,
-    url,
     cycle_iteration,
     high_priority_items,
     normal_priority_items,
@@ -63,9 +63,9 @@ def background_update(
         stdscr.addstr(9, 3, f"cycle: {cycle_iteration}")
         stdscr.addstr(9, 15, f"iterations: {total_iterations}")
 
-        stdscr.addstr(11, 11, f"up next: {url}")
-        stdscr.addstr(13, 11, f"current: {history[-1]}")
-        stdscr.addstr(15, 14, f"prev: {history[-2]}")
+        stdscr.addstr(11, 11, f"up next: {history[-1]}")
+        stdscr.addstr(13, 11, f"current: {history[-2]}")
+        stdscr.addstr(15, 14, f"prev: {history[-3]}")
 
         stdscr.addstr(17, 3, "Press 'q' to quit.")
         stdscr.addstr(19, 3, "Press Any Key to Open...")
@@ -85,10 +85,10 @@ def remove_random_elements(arr, percentage):
 def main(stdscr):
     c, h, n, l, i, e = 0, 0, 0, 0, 0, 0
     page = None
-    history = [" ", " "]
+    history = [" ", " ", " "]
     update_thread = threading.Thread(
         target=background_update,
-        args=(stdscr, history, page, c, h, n, l, e, i),
+        args=(stdscr, history, c, h, n, l, e, i),
         daemon=True
     )
     update_thread.start()
@@ -113,6 +113,7 @@ def main(stdscr):
             loop_list += [[random.choice(data["Extra"]), "Extra"]]
             random.shuffle(loop_list)
             for page in loop_list:
+                history.append(page[0])
                 if page[1] == 'High': h += 1
                 if page[1] == 'Normal': n += 1
                 if page[1] == 'Low': l += 1
@@ -123,12 +124,11 @@ def main(stdscr):
                     os._exit(0)
                 elif key == curses.KEY_RESIZE:
                     height, width = stdscr.getmaxyx()
-                    stdscr.addstr(height - 1, 0, f"Screen width: {width}, height: {height}")
-                elif key == curses.KEY_UP:
-                    history.append(page[0])
-                    history = history[-2:]
+                    stdscr.addstr(height - 5, 1, f"Screen width: {width}, height: {height}")
                 elif key == curses.KEY_DOWN:
                     history.append(page[0])
+                else:
+                    webbrowser.open(page[0], new=1, autoraise=True)
     except KeyboardInterrupt:
         pass
 
