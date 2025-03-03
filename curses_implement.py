@@ -88,8 +88,8 @@ def remove_random_elements(arr, percentage):
 
 def main(stdscr):
     c, h, n, l, i, e = 0, 0, 0, 0, 0, 0
-    percentage_remaining = 0
     history = [" ", " ", " "]
+    percentage_remaining = 0.0
     update_thread = threading.Thread(
         target=background_update,
         args=(stdscr, history, percentage_remaining, c, h, n, l, e, i),
@@ -119,7 +119,7 @@ def main(stdscr):
             total_pages = len(loop_list)
             for i, page in enumerate(loop_list):
                 remaining_pages = total_pages - (i + 1)
-                percentage_remaining = (remaining_pages / total_pages) * 100
+                percentage_remaining = (remaining_pages / total_pages) * 100 if total_pages > 0 else 0
                 history.append(page[0])
                 if page[1] == 'High': h += 1
                 if page[1] == 'Normal': n += 1
