@@ -86,6 +86,25 @@ def remove_random_elements(arr, percentage):
     return arr
 
 
+def load_and_shuffle_data(filename, size):
+    with open(filename) as json_file:
+        data = json.load(json_file)
+    priority1 = [[x, 'High'] for x in data["High Priority"]]
+    priority2 = [[x, 'Normal'] for x in data["Normal Priority"]]
+    priority3 = [[x, 'Low'] for x in data["Low Priority"]]
+    random.shuffle(priority1)
+    random.shuffle(priority2)
+    random.shuffle(priority3)
+    priority1 = remove_random_elements(priority1, 50)
+    priority2 = remove_random_elements(priority2, 50)
+    priority3 = remove_random_elements(priority3, 90)
+    loop_list = priority1 + priority2 + priority3
+    remove_random_elements(loop_list, size)
+    loop_list += [[random.choice(data["Extra"]), "Extra"]]
+    random.shuffle(loop_list)
+    return data, loop_list
+
+
 def main(stdscr):
     c, h, n, l, i, e = 0, 0, 0, 0, 0, 0
     history = [" ", " ", " "]
@@ -101,21 +120,7 @@ def main(stdscr):
             stdscr.clear()
             curses.curs_set(0)
             c += 1
-            with open(str(args.filename)) as json_file:
-                data = json.load(json_file)
-            priority1 = [[x, 'High'] for x in data["High Priority"]]
-            priority2 = [[x, 'Normal'] for x in data["Normal Priority"]]
-            priority3 = [[x, 'Low'] for x in data["Low Priority"]]
-            random.shuffle(priority1)
-            random.shuffle(priority2)
-            random.shuffle(priority3)
-            priority1 = remove_random_elements(priority1, 50)
-            priority2 = remove_random_elements(priority2, 50)
-            priority3 = remove_random_elements(priority3, 90)
-            loop_list = priority1 + priority2 + priority3
-            remove_random_elements(loop_list, args.size)
-            loop_list += [[random.choice(data["Extra"]), "Extra"]]
-            random.shuffle(loop_list)
+            data, loop_list = load_and_shuffle_data(str(args.filename), args.size)
             total_pages = len(loop_list)
             for i, page in enumerate(loop_list):
                 remaining_pages = total_pages - (i + 1)
