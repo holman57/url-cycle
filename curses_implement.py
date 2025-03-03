@@ -3,6 +3,7 @@ import threading
 import argparse
 import random
 import json
+import os
 
 # The standard `curses` module in Python is designed primarily for Unix-like systems
 # and doesn't directly support Windows.
@@ -69,9 +70,6 @@ def background_update(
         stdscr.addstr(17, 3, "Press 'q' to quit.")
         stdscr.addstr(19, 3, "Press Any Key to Open...")
 
-        height, width = stdscr.getmaxyx()
-        stdscr.addstr(25, 1, f"Screen width: {width}, height: {height}")
-
         stdscr.refresh()
         time.sleep(0.01)
 
@@ -120,7 +118,17 @@ def main(stdscr):
                 if page[1] == 'Low': l += 1
                 if page[1] == 'Extra': e += 1
                 i += 1
-                stdscr.getch()
+                key = stdscr.getch()
+                if key == ord('q'):
+                    os._exit(0)
+                elif key == curses.KEY_RESIZE:
+                    height, width = stdscr.getmaxyx()
+                    stdscr.addstr(height - 1, 0, f"Screen width: {width}, height: {height}")
+                elif key == curses.KEY_UP:
+                    history.append(page[0])
+                    history = history[-2:]
+                elif key == curses.KEY_DOWN:
+                    history.append(page[0])
     except KeyboardInterrupt:
         pass
 
