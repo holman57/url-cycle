@@ -8,7 +8,6 @@ import os
 # The standard `curses` module in Python is designed primarily for Unix-like systems
 # and doesn't directly support Windows.
 import curses
-
 # pip install windows-curses
 
 parser = argparse.ArgumentParser(
@@ -23,53 +22,49 @@ parser.add_argument("-s", "--size", default=92, nargs='?', type=int, const=1)
 args = parser.parse_args()
 
 
+def display_state(stdscr, state, start_time):
+    stdscr.erase()
+    elapsed_time = time.time() - start_time
+    if elapsed_time < 60:
+        display_time = f"{elapsed_time:.2f} s"
+    elif elapsed_time < 3600:
+        display_time = f"{int(elapsed_time / 60)}:{int(elapsed_time % 60):02} m"
+    else:
+        display_time = f"{elapsed_time / 3600:.2f} h"
+    height, width = stdscr.getmaxyx()
+    stdscr.addstr(height - 5, 1, f"Remaining: {state['remaining']:.2f}%")
+    total = state['total']
+    remaining = state['remaining']
+    done = total - remaining
+    bar_width = int(width * 0.8) - 2
+    percent = int(done / (total if total != 0 else 1) * bar_width)
+    bar = "█" * percent
+    stdscr.addstr(0, 0, bar)
+    stdscr.addstr(1, 2, f"start: {time.ctime(start_time)}")
+    stdscr.addstr(3, 0,
+      f" ┌─────────────┐\n"
+      f" │ {display_time}\n"
+      f" └─────────────┘"
+    )
+    stdscr.addstr(4, 15, "│")
+    stdscr.addstr(7, 3, f"High: {state['high']}")
+    stdscr.addstr(7, 15, f"Normal: {state['normal']}")
+    stdscr.addstr(7, 30, f"Low: {state['low']}")
+    stdscr.addstr(7, 41, f"Extra: {state['extra']}")
+    stdscr.addstr(9, 3, f"cycle: {state['cycle']}")
+    stdscr.addstr(9, 15, f"iterations: {state['iterations']}")
+    stdscr.addstr(11, 11, f"up next: {state['history'][-1]}")
+    stdscr.addstr(13, 11, f"current: {state['history'][-2]}")
+    stdscr.addstr(15, 14, f"prev: {state['history'][-3]}")
+    stdscr.addstr(17, 3, "Press 'q' to quit.")
+    stdscr.addstr(19, 3, "Press Any Key to Open...")
+    stdscr.refresh()
+
+
 def background_update(stdscr, state):
     start_time = time.time()
     while True:
-        stdscr.erase()
-        elapsed_time = time.time() - start_time
-        if elapsed_time < 60:
-            display_time = f"{elapsed_time:.2f} s"
-        elif elapsed_time < 3600:
-            display_time = f"{int(elapsed_time / 60)}:{int(elapsed_time % 60):02} m"
-        else:
-            display_time = f"{elapsed_time / 3600:.2f} h"
-
-        height, width = stdscr.getmaxyx()
-        stdscr.addstr(height - 5, 1, f"Remaining: {state['remaining']:.2f}%")
-
-        total = state['total']
-        remaining = state['remaining']
-        done = total - remaining
-        bar_width = int(width * 0.8) - 2
-        percent = int(done / (total if total != 0 else 1) * bar_width)
-        bar = "█" * percent
-        stdscr.addstr(0, 0, bar)
-
-        stdscr.addstr(1, 2, f"start: {time.ctime(start_time)}")
-        stdscr.addstr(3, 0,
-          f" ┌─────────────┐\n"
-          f" │ {display_time}\n"
-          f" └─────────────┘"
-        )
-        stdscr.addstr(4, 15, "│")
-
-        stdscr.addstr(7, 3, f"High: {state['high']}")
-        stdscr.addstr(7, 15, f"Normal: {state['normal']}")
-        stdscr.addstr(7, 30, f"Low: {state['low']}")
-        stdscr.addstr(7, 41, f"Extra: {state['extra']}")
-
-        stdscr.addstr(9, 3, f"cycle: {state['cycle']}")
-        stdscr.addstr(9, 15, f"iterations: {state['iterations']}")
-
-        stdscr.addstr(11, 11, f"up next: {state['history'][-1]}")
-        stdscr.addstr(13, 11, f"current: {state['history'][-2]}")
-        stdscr.addstr(15, 14, f"prev: {state['history'][-3]}")
-
-        stdscr.addstr(17, 3, "Press 'q' to quit.")
-        stdscr.addstr(19, 3, "Press Any Key to Open...")
-
-        stdscr.refresh()
+        display_state(stdscr, state, start_time)
         time.sleep(0.01)
 
 
