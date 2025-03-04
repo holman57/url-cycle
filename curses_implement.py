@@ -34,12 +34,18 @@ def background_update(stdscr, state):
             display_time = f"{int(elapsed_time / 60)}:{int(elapsed_time % 60):02} m"
         else:
             display_time = f"{elapsed_time / 3600:.2f} h"
+
+        height, width = stdscr.getmaxyx()
+        stdscr.addstr(height - 5, 1, f"Remaining: {state['remaining']:.2f}%")
+
         total = state['total']
         remaining = state['remaining']
         done = total - remaining
-        percent = int(done / (total if total != 0 else 1) * 8)
-        bar = "█" * percent + " " * (8 - percent)
-        stdscr.addstr(1, 0, bar)
+        bar_width = int(width * 0.8) - 2
+        percent = int(done / (total if total != 0 else 1) * bar_width)
+        bar = "█" * percent
+        stdscr.addstr(0, 0, bar)
+
         stdscr.addstr(1, 2, f"start: {time.ctime(start_time)}")
         stdscr.addstr(3, 0,
           f" ┌─────────────┐\n"
@@ -62,9 +68,6 @@ def background_update(stdscr, state):
 
         stdscr.addstr(17, 3, "Press 'q' to quit.")
         stdscr.addstr(19, 3, "Press Any Key to Open...")
-
-        height, width = stdscr.getmaxyx()
-        stdscr.addstr(height - 5, 1, f"Remaining: {state['remaining']:.2f}%")
 
         stdscr.refresh()
         time.sleep(0.01)
