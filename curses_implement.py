@@ -5,12 +5,11 @@ import argparse
 import random
 import json
 import os
-
 # The standard `curses` module in Python is designed primarily for Unix-like systems
 # and doesn't directly support Windows.
 import curses
-# pip install windows-curses
 
+# pip install windows-curses
 
 parser = argparse.ArgumentParser(
     prog="Cycle List",
@@ -21,21 +20,10 @@ parser = argparse.ArgumentParser(
 )
 parser.add_argument("-f", "--filename", default="url.json", nargs='?', type=str, const=1)
 parser.add_argument("-s", "--size", default=92, nargs='?', type=int, const=1)
-
 args = parser.parse_args()
 
 
-def background_update(
-    stdscr,
-    history,
-    percentage_remaining,
-    cycle_iteration,
-    high_priority_items,
-    normal_priority_items,
-    low_priority_items,
-    extra_items,
-    total_iterations
-):
+def background_update(stdscr, state):
     start_time = time.time()
     while True:
         stdscr.erase()
@@ -46,33 +34,32 @@ def background_update(
             display_time = f"{int(elapsed_time / 60)}:{int(elapsed_time % 60):02} m"
         else:
             display_time = f"{elapsed_time / 3600:.2f} h"
-
         stdscr.addstr(0, 0, "████ ██")
         stdscr.addstr(1, 2, f"start: {time.ctime(start_time)}")
         stdscr.addstr(3, 0,
-            f" ┌─────────────┐\n"
-            f" │ {display_time}\n"
-            f" └─────────────┘"
+          f" ┌─────────────┐\n"
+          f" │ {display_time}\n"
+          f" └─────────────┘"
         )
         stdscr.addstr(4, 15, "│")
 
-        stdscr.addstr(7, 3, f"High: {high_priority_items}")
-        stdscr.addstr(7, 15, f"Normal: {normal_priority_items}")
-        stdscr.addstr(7, 30, f"Low: {low_priority_items}")
-        stdscr.addstr(7, 41, f"Extra: {extra_items}")
+        stdscr.addstr(7, 3, f"High: {state['high']}")
+        stdscr.addstr(7, 15, f"Normal: {state['normal']}")
+        stdscr.addstr(7, 30, f"Low: {state['low']}")
+        stdscr.addstr(7, 41, f"Extra: {state['extra']}")
 
-        stdscr.addstr(9, 3, f"cycle: {cycle_iteration}")
-        stdscr.addstr(9, 15, f"iterations: {total_iterations}")
+        stdscr.addstr(9, 3, f"cycle: {state['cycle']}")
+        stdscr.addstr(9, 15, f"iterations: {state['iterations']}")
 
-        stdscr.addstr(11, 11, f"up next: {history[-1]}")
-        stdscr.addstr(13, 11, f"current: {history[-2]}")
-        stdscr.addstr(15, 14, f"prev: {history[-3]}")
+        stdscr.addstr(11, 11, f"up next: {state['history'][-1]}")
+        stdscr.addstr(13, 11, f"current: {state['history'][-2]}")
+        stdscr.addstr(15, 14, f"prev: {state['history'][-3]}")
 
         stdscr.addstr(17, 3, "Press 'q' to quit.")
         stdscr.addstr(19, 3, "Press Any Key to Open...")
 
         height, width = stdscr.getmaxyx()
-        stdscr.addstr(height - 5, 1, f"Remaining: {percentage_remaining:.2f}%")
+        stdscr.addstr(height - 5, 1, f"Remaining: {state['remaining']:.2f}%")
 
         stdscr.refresh()
         time.sleep(0.01)
@@ -106,12 +93,19 @@ def load_and_shuffle_data(filename, size):
 
 
 def main(stdscr):
-    c, h, n, l, i, e = 0, 0, 0, 0, 0, 0
-    history = [" ", " ", " "]
-    percentage_remaining = 0.0
+    state = {
+        'cycle': 0,
+        'high': 0,
+        'normal': 0,
+        'low': 0,
+        'extra': 0,
+        'iterations': 0,
+        'history': [" ", " ", " "],
+        'remaining': 0.0
+    }
     update_thread = threading.Thread(
         target=background_update,
-        args=(stdscr, history, percentage_remaining, c, h, n, l, e, i),
+        args=(stdscr, state),
         daemon=True
     )
     update_thread.start()
@@ -119,18 +113,18 @@ def main(stdscr):
         while True:
             stdscr.clear()
             curses.curs_set(0)
-            c += 1
+            state['cycle'] += 1
             data, loop_list = load_and_shuffle_data(str(args.filename), args.size)
             total_pages = len(loop_list)
             for i, page in enumerate(loop_list):
                 remaining_pages = total_pages - (i + 1)
-                percentage_remaining = (remaining_pages / total_pages) * 100 if total_pages > 0 else 0
-                history.append(page[0])
-                if page[1] == 'High': h += 1
-                if page[1] == 'Normal': n += 1
-                if page[1] == 'Low': l += 1
-                if page[1] == 'Extra': e += 1
-                i += 1
+                state['remaining'] = (remaining_pages / total_pages) * 100 if total_pages > 0 else 0
+                state['history'].append(page[0])
+                if page[1] == 'High': state['high'] += 1
+                if page[1] == 'Normal': state['normal'] += 1
+                if page[1] == 'Low': state['low'] += 1
+                if page[1] == 'Extra': state['extra'] += 1
+                state['iterations'] += 1
                 key = stdscr.getch()
                 if key == ord('q'):
                     os._exit(0)
@@ -138,7 +132,7 @@ def main(stdscr):
                     height, width = stdscr.getmaxyx()
                     stdscr.addstr(height - 5, 1, f"Screen width: {width}, height: {height}")
                 elif key == curses.KEY_DOWN:
-                    history.append(page[0])
+                    state['history'].append(page[0])
                 else:
                     webbrowser.open(page[0], new=1, autoraise=True)
     except KeyboardInterrupt:
