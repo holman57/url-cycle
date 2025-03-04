@@ -10,6 +10,9 @@ import os
 import curses
 # pip install windows-curses
 
+DEFAULT_FILENAME = "url.json"
+DEFAULT_SIZE = 92
+
 parser = argparse.ArgumentParser(
     prog="Cycle List",
     description="A script that cycles through items in a list. It takes a list of items as input and prints each "
@@ -17,11 +20,14 @@ parser = argparse.ArgumentParser(
                 "supports a size parameter to limit the number of items to cycle through. Items in the list are "
                 "shuffled randomly depending on which priority bucket they belong to."
 )
-parser.add_argument("-f", "--filename", default="url.json", nargs='?', type=str, const=1)
-parser.add_argument("-s", "--size", default=92, nargs='?', type=int, const=1)
+parser.add_argument("filename", nargs="?", default=DEFAULT_FILENAME, type=str,
+                    help="Name of the file to read")
+parser.add_argument("size", nargs="?", default=DEFAULT_SIZE, type=int,
+                    help="Number of items to cycle through")
+parser.add_argument("-f", "--file", action="store_true", help="Name of the JSON file for the list")
+parser.add_argument("-s", "--size", action="store_true", help="Size of the probability distribution")
+
 args = parser.parse_args()
-
-
 def display_state(stdscr, state, start_time):
     stdscr.erase()
     elapsed_time = time.time() - start_time
