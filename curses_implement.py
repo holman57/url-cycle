@@ -34,7 +34,12 @@ def background_update(stdscr, state):
             display_time = f"{int(elapsed_time / 60)}:{int(elapsed_time % 60):02} m"
         else:
             display_time = f"{elapsed_time / 3600:.2f} h"
-        stdscr.addstr(0, 0, "████ ██")
+        total = state['total']
+        remaining = state['remaining']
+        done = total - remaining
+        percent = int(done / (total if total != 0 else 1) * 8)
+        bar = "█" * percent + " " * (8 - percent)
+        stdscr.addstr(1, 0, bar)
         stdscr.addstr(1, 2, f"start: {time.ctime(start_time)}")
         stdscr.addstr(3, 0,
           f" ┌─────────────┐\n"
@@ -101,7 +106,8 @@ def main(stdscr):
         'extra': 0,
         'iterations': 0,
         'history': [" ", " ", " "],
-        'remaining': 0.0
+        'remaining': 0.0,
+        'total': 0
     }
     update_thread = threading.Thread(
         target=background_update,
@@ -115,10 +121,10 @@ def main(stdscr):
             curses.curs_set(0)
             state['cycle'] += 1
             data, loop_list = load_and_shuffle_data(str(args.filename), args.size)
-            total_pages = len(loop_list)
+            state['total'] = len(loop_list)
             for i, page in enumerate(loop_list):
-                remaining_pages = total_pages - (i + 1)
-                state['remaining'] = (remaining_pages / total_pages) * 100 if total_pages > 0 else 0
+                remaining = state['total'] - (i + 1)
+                state['remaining'] = (remaining / state['total']) * 100 if state['total'] > 0 else 0
                 state['history'].append(page[0])
                 if page[1] == 'High': state['high'] += 1
                 if page[1] == 'Normal': state['normal'] += 1
