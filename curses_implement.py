@@ -38,14 +38,13 @@ def display_state(stdscr, state, start_time):
     else:
         display_time = f"{elapsed_time / 3600:.2f} h"
     height, width = stdscr.getmaxyx()
-    stdscr.addstr(23, 1, f"Remaining: {state['remaining']:.2f}%")
-    stdscr.addstr(25, 1, f"{state['total']}")
+    # stdscr.addstr(23, 1, f"Remaining: {state['remaining']:.2f}%")
+    # stdscr.addstr(25, 1, f"{state['total']}")
     bar_length = int((width + 1) / state['total'] if state['total'] > 0 else 0)
-    stdscr.addstr(26, 1, f"{bar_length}")
-    stdscr.addstr(27, 1, f"{state['position']}")
+    # stdscr.addstr(26, 1, f"{bar_length}")
+    # stdscr.addstr(27, 1, f"{state['position']}")
     bar = "█" * bar_length * state['position']
-
-    stdscr.addstr(24, 1, f"Screen width: {width}, height: {height}")
+    # stdscr.addstr(24, 1, f"Screen width: {width}, height: {height}")
 
     stdscr.addstr(0, 0, bar)
     stdscr.addstr(1, 2, f"start: {time.ctime(start_time)}")
