@@ -54,6 +54,8 @@ def display_state(stdscr, state, start_time):
     stdscr.addstr(15, 14, f"prev: {state['history'][-3] if len(state['history']) > 2 else ' '}")
     stdscr.addstr(17, 3, "Press 'q' to quit.")
     stdscr.addstr(19, 3, "Press Any Key to Open...")
+    stdscr.addstr(21, 3, f"history len: {len(state['history'])}")
+    stdscr.addstr(23, 3, f"position: {(state['cycle'] - 1) * state['total'] + state['position']}")
     stdscr.refresh()
 
 
@@ -110,7 +112,8 @@ def main(stdscr):
         'history': [],
         'remaining': 0.0,
         'total': 0,
-        'position': 0
+        'position': 0,
+        'history_index': 0,
     }
     update_thread = threading.Thread(
         target=background_update,
@@ -140,11 +143,10 @@ def main(stdscr):
                         if len(state['history']) > 0:
                             if len(state['history']) > 1:
                                 state['history'].pop()
-                        else:
-                            state['history'].append(' ')
                     elif key != curses.KEY_RESIZE:
-                        webbrowser.open(page[0], new=1, autoraise=True)
-                        break
+                        if len(state['history']) == (state['cycle'] - 1) * state['total'] + state['position']:
+                            webbrowser.open(page[0], new=1, autoraise=True)
+                            break
     except KeyboardInterrupt:
         pass
 
