@@ -38,13 +38,14 @@ def display_state(stdscr, state, start_time):
     else:
         display_time = f"{elapsed_time / 3600:.2f} h"
     height, width = stdscr.getmaxyx()
-    stdscr.addstr(height - 5, 1, f"Remaining: {state['remaining']:.2f}%")
-    total = state['total']
-    remaining = state['remaining']
-    done = total - remaining
-    bar_width = int(width * 0.8) - 2
-    percent = int(done / (total if total != 0 else 1) * bar_width)
-    bar = "█" * percent
+    stdscr.addstr(23, 1, f"Remaining: {state['remaining']:.2f}%")
+    stdscr.addstr(25, 1, f"{state['total']}")
+    bar_length = int(width / state['total'] if state['total'] > 0 else 0)
+    stdscr.addstr(26, 1, f"{bar_length}")
+    bar = "█" * bar_length
+
+    stdscr.addstr(24, 1, f"Screen width: {width}, height: {height}")
+
     stdscr.addstr(0, 0, bar)
     stdscr.addstr(1, 2, f"start: {time.ctime(start_time)}")
     stdscr.addstr(3, 0,
@@ -64,6 +65,7 @@ def display_state(stdscr, state, start_time):
     stdscr.addstr(15, 14, f"prev: {state['history'][-3]}")
     stdscr.addstr(17, 3, "Press 'q' to quit.")
     stdscr.addstr(19, 3, "Press Any Key to Open...")
+
     stdscr.refresh()
 
 
@@ -141,7 +143,7 @@ def main(stdscr):
                         os._exit(0)
                     elif key == curses.KEY_RESIZE:
                         height, width = stdscr.getmaxyx()
-                        stdscr.addstr(height - 5, 1, f"Screen width: {width}, height: {height}")
+                        stdscr.addstr(24, 1, f"Screen width: {width}, height: {height}")
                     elif key == curses.KEY_DOWN:
                         break
                     elif key == curses.KEY_UP:
