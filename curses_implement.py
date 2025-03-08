@@ -42,7 +42,8 @@ def display_state(stdscr, state, start_time):
     stdscr.addstr(25, 1, f"{state['total']}")
     bar_length = int(width / state['total'] if state['total'] > 0 else 0)
     stdscr.addstr(26, 1, f"{bar_length}")
-    bar = "█" * bar_length
+    stdscr.addstr(27, 1, f"{state['position']}")
+    bar = "█" * bar_length * state['position']
 
     stdscr.addstr(24, 1, f"Screen width: {width}, height: {height}")
 
@@ -113,7 +114,8 @@ def main(stdscr):
         'iterations': 0,
         'history': [" ", " ", " "],
         'remaining': 0.0,
-        'total': 0
+        'total': 0,
+        'position': 0
     }
     update_thread = threading.Thread(
         target=background_update,
@@ -129,6 +131,7 @@ def main(stdscr):
             data, loop_list = load_and_shuffle_data(str(args.filename), args.size)
             state['total'] = len(loop_list)
             for i, page in enumerate(loop_list):
+                state['position'] = i + 1
                 remaining = state['total'] - (i + 1)
                 state['remaining'] = (remaining / state['total']) * 100 if state['total'] > 0 else 0
                 state['history'].append(page[0])
