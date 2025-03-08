@@ -143,7 +143,7 @@ def main(stdscr):
                         height, width = stdscr.getmaxyx()
                         stdscr.addstr(height - 5, 1, f"Screen width: {width}, height: {height}")
                     elif key == curses.KEY_DOWN:
-                        state['history'].append(page[0])
+                        break
                     elif key == curses.KEY_UP:
                         if len(state['history']) > 0:
                             if len(state['history']) > 1:
