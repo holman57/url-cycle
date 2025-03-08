@@ -111,11 +111,5 @@ This project is licensed under the MIT License. For more details, see the LICENS
 
 ---
 
-## Acknowledgments
-
-Special thanks to all contributors and open-source resources that helped in shaping this project.
-
----
-
 The `cycle` tool is optimized for simplicity and manual control. For advanced or automated URL cycling needs, consider extending the functionality with batch processing or external API integration.
 
