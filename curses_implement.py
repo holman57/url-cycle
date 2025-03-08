@@ -31,28 +31,15 @@ args = parser.parse_args()
 def display_state(stdscr, state, start_time):
     stdscr.erase()
     elapsed_time = time.time() - start_time
-    if elapsed_time < 60:
-        display_time = f"{elapsed_time:.2f} s"
-    elif elapsed_time < 3600:
-        display_time = f"{int(elapsed_time / 60)}:{int(elapsed_time % 60):02} m"
-    else:
-        display_time = f"{elapsed_time / 3600:.2f} h"
+    display_time = f"{elapsed_time:.2f} s" if elapsed_time < 60 else \
+        f"{int(elapsed_time / 60)}:{int(elapsed_time % 60):02} m" if elapsed_time < 3600 else \
+            f"{elapsed_time / 3600:.2f} h"
     height, width = stdscr.getmaxyx()
-    # stdscr.addstr(23, 1, f"Remaining: {state['remaining']:.2f}%")
-    # stdscr.addstr(25, 1, f"{state['total']}")
-    bar_length = int((width + 1) / state['total'] if state['total'] > 0 else 0)
-    # stdscr.addstr(26, 1, f"{bar_length}")
-    # stdscr.addstr(27, 1, f"{state['position']}")
+    bar_length = int((width + 1) / state['total']) if state['total'] > 0 else 0
     bar = "█" * bar_length * state['position']
-    # stdscr.addstr(24, 1, f"Screen width: {width}, height: {height}")
-
     stdscr.addstr(0, 0, bar)
     stdscr.addstr(1, 2, f"start: {time.ctime(start_time)}")
-    stdscr.addstr(3, 0,
-      f" ┌─────────────┐\n"
-      f" │ {display_time}\n"
-      f" └─────────────┘"
-    )
+    stdscr.addstr(3, 0, f" ┌─────────────┐\n │ {display_time}\n └─────────────┘")
     stdscr.addstr(4, 15, "│")
     stdscr.addstr(7, 3, f"High: {state['high']}")
     stdscr.addstr(7, 15, f"Normal: {state['normal']}")
@@ -65,7 +52,6 @@ def display_state(stdscr, state, start_time):
     stdscr.addstr(15, 14, f"prev: {state['history'][-3]}")
     stdscr.addstr(17, 3, "Press 'q' to quit.")
     stdscr.addstr(19, 3, "Press Any Key to Open...")
-
     stdscr.refresh()
 
 
