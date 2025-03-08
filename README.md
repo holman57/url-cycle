@@ -1,6 +1,8 @@
 # URL-Cycle
 
-`url-cycle` is a terminal application implemented with Python that is designed to help users cycle through a list of URLs with flexibility and control. It is especially useful for scenarios where prioritizing certain URLs in the cycling order is critical. This tool allows customization by using a JSON file to manage the URL list and offers options to adjust cycling behavior directly from the command line.
+`cycle.py` is a terminal application implemented with the Curses module in Python that is designed to help users cycle through a list of URLs with flexibility and control. It is especially useful for scenarios where prioritizing certain URLs in the cycling order is critical. This tool allows customization by using a JSON file to manage the URL list and offers options to adjust cycling behavior directly from the command line.
+
+The application runs in Windows, Mac, Linux terminals
 
 ---
 
@@ -12,12 +14,6 @@
 
 - **Customizable via JSON or YAML:**
   - URL lists can now be managed with either a JSON or YAML file, giving users more flexibility in defining URLs and their priority levels.
-
-- **Manual Control:**
-  - The utility leverages the `wait_key()` function to allow manual intervention during the cycle, providing users the flexibility to pause and resume.
-
-- **Console Output Control:**
-  - The `cls()` function ensures the console remains clean by clearing irrelevant or outdated output during each cycle.
 
 - **Command-Line Configuration:**
   - Modify cycling behaviors and preferences using command-line arguments, including support for timeout intervals and enhanced cycling rules.
@@ -32,14 +28,11 @@
 2. **Run the Script:**
    - Execute the script using Python, providing any necessary command-line arguments to fine-tune the cycling behavior.
 
-3. **Cycle and Control:**
-   - URLs will cycle based on the defined rules and priority. Use `wait_key()` for manual control when needed, and enjoy a clutter-free terminal facilitated by the use of `cls()`.
-
 ---
 
 ## Installation
 
-To use `url-cycle`, clone the repository or download the script and ensure dependencies are installed.
+To use `cycle`, clone the repository or download the script and ensure dependencies are installed.
 
 ```bash
 # Clone the repository
@@ -107,13 +100,6 @@ An example of how the JSON file could look:
 
 ---
 
-## Key Functions
-
-- **`wait_key()`**: Allows users to manually pause and control the cycling through URLs.
-- **`cls()`**: Keeps the console output clean for better visibility and less clutter.
-
----
-
 ## Contributions
 Contributions to the project are welcome! Feel free to fork the repository, make changes, and submit pull requests. Please ensure compatibility with both JSON and YAML input formats. For bugs or feature requests, create an issue in the repository.
 
@@ -131,5 +117,5 @@ Special thanks to all contributors and open-source resources that helped in shap
 
 ---
 
-The `url-cycle` tool is optimized for simplicity and manual control. For advanced or automated URL cycling needs, consider extending the functionality with batch processing or external API integration.
+The `cycle` tool is optimized for simplicity and manual control. For advanced or automated URL cycling needs, consider extending the functionality with batch processing or external API integration.
 
