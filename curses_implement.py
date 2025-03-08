@@ -28,6 +28,8 @@ parser.add_argument("-f", "--file", action="store_true", help="Name of the JSON 
 parser.add_argument("-s", "--size", action="store_true", help="Size of the probability distribution")
 
 args = parser.parse_args()
+
+
 def display_state(stdscr, state, start_time):
     stdscr.erase()
     elapsed_time = time.time() - start_time
@@ -47,9 +49,9 @@ def display_state(stdscr, state, start_time):
     stdscr.addstr(7, 41, f"Extra: {state['extra']}")
     stdscr.addstr(9, 3, f"cycle: {state['cycle']}")
     stdscr.addstr(9, 15, f"iterations: {state['iterations']}")
-    stdscr.addstr(11, 11, f"up next: {state['history'][-1]}")
-    stdscr.addstr(13, 11, f"current: {state['history'][-2]}")
-    stdscr.addstr(15, 14, f"prev: {state['history'][-3]}")
+    stdscr.addstr(11, 11, f"up next: {state['history'][-1] if len(state['history']) > 0 else ' '}")
+    stdscr.addstr(13, 11, f"current: {state['history'][-2] if len(state['history']) > 1 else ' '}")
+    stdscr.addstr(15, 14, f"prev: {state['history'][-3] if len(state['history']) > 2 else ' '}")
     stdscr.addstr(17, 3, "Press 'q' to quit.")
     stdscr.addstr(19, 3, "Press Any Key to Open...")
     stdscr.refresh()
@@ -105,7 +107,7 @@ def main(stdscr):
         'low': 0,
         'extra': 0,
         'iterations': 0,
-        'history': [" ", " ", " "],
+        'history': [],
         'remaining': 0.0,
         'total': 0,
         'position': 0
@@ -131,8 +133,7 @@ def main(stdscr):
                     if key == ord('q'):
                         os._exit(0)
                     elif key == curses.KEY_RESIZE:
-                        height, width = stdscr.getmaxyx()
-                        stdscr.addstr(24, 1, f"Screen width: {width}, height: {height}")
+                        continue
                     elif key == curses.KEY_DOWN:
                         break
                     elif key == curses.KEY_UP:
@@ -140,7 +141,7 @@ def main(stdscr):
                             if len(state['history']) > 1:
                                 state['history'].pop()
                         else:
-                            state['history'].append(" ")
+                            state['history'].append(' ')
                     elif key != curses.KEY_RESIZE:
                         webbrowser.open(page[0], new=1, autoraise=True)
                         break
