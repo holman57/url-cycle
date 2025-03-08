@@ -135,16 +135,18 @@ def main(stdscr):
                 if page[1] == 'Low': state['low'] += 1
                 if page[1] == 'Extra': state['extra'] += 1
                 state['iterations'] += 1
-                key = stdscr.getch()
-                if key == ord('q'):
-                    os._exit(0)
-                elif key == curses.KEY_RESIZE:
-                    height, width = stdscr.getmaxyx()
-                    stdscr.addstr(height - 5, 1, f"Screen width: {width}, height: {height}")
-                elif key == curses.KEY_DOWN:
-                    state['history'].append(page[0])
-                else:
-                    webbrowser.open(page[0], new=1, autoraise=True)
+                while True:
+                    key = stdscr.getch()
+                    if key == ord('q'):
+                        os._exit(0)
+                    elif key == curses.KEY_RESIZE:
+                        height, width = stdscr.getmaxyx()
+                        stdscr.addstr(height - 5, 1, f"Screen width: {width}, height: {height}")
+                    elif key == curses.KEY_DOWN:
+                        state['history'].append(page[0])
+                    elif key != curses.KEY_RESIZE:
+                        webbrowser.open(page[0], new=1, autoraise=True)
+                        break
     except KeyboardInterrupt:
         pass
 
