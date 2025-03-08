@@ -11,7 +11,7 @@ import curses
 # pip install windows-curses
 
 DEFAULT_FILENAME = "url.json"
-DEFAULT_SIZE = 92
+DEFAULT_SIZE = 93
 
 parser = argparse.ArgumentParser(
     prog="Cycle List",
@@ -49,13 +49,14 @@ def display_state(stdscr, state, start_time):
     stdscr.addstr(7, 41, f"Extra: {state['extra']}")
     stdscr.addstr(9, 3, f"cycle: {state['cycle']}")
     stdscr.addstr(9, 15, f"iterations: {state['iterations']}")
-    stdscr.addstr(11, 11, f"up next: {state['history'][-1] if len(state['history']) > 0 else ' '}")
+    stdscr.addstr(11, 11, f"up next: {state['history'][state['history_index']] if state['history_index'] > -1 and len(state['history']) > 0 else ' '}")
     stdscr.addstr(13, 11, f"current: {state['history'][-2] if len(state['history']) > 1 else ' '}")
     stdscr.addstr(15, 14, f"prev: {state['history'][-3] if len(state['history']) > 2 else ' '}")
     stdscr.addstr(17, 3, "Press 'q' to quit.")
     stdscr.addstr(19, 3, "Press Any Key to Open...")
     stdscr.addstr(21, 3, f"history len: {len(state['history'])}")
     stdscr.addstr(23, 3, f"position: {(state['cycle'] - 1) * state['total'] + state['position']}")
+    stdscr.addstr(25, 3, f"history index: {state['history_index']}")
     stdscr.refresh()
 
 
@@ -138,14 +139,23 @@ def main(stdscr):
                     elif key == curses.KEY_RESIZE:
                         continue
                     elif key == curses.KEY_DOWN:
-                        break
+                        if len(state['history']) != state['history_index']:
+                            state['history_index'] += 1
+                        else:
+                            break
                     elif key == curses.KEY_UP:
                         if len(state['history']) > 0:
                             if len(state['history']) > 1:
-                                state['history'].pop()
+                                if state['history_index'] > 0:
+                                    state['history_index'] -= 1
                     elif key != curses.KEY_RESIZE:
                         if len(state['history']) == (state['cycle'] - 1) * state['total'] + state['position']:
                             webbrowser.open(page[0], new=1, autoraise=True)
+                            state['history_index'] += 1
+                            break
+                        else:
+                            webbrowser.open(state['history'][state['history_index']], new=1, autoraise=True)
+                            state['history'] = state['history'][:state['history_index']]
                             break
     except KeyboardInterrupt:
         pass
