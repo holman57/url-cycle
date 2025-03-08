@@ -70,7 +70,7 @@ pip install -r requirements.txt
 ## Command-Line Arguments
 
 - `--filename`: Path to the JSON or YAML file containing the URL list.
-- `--size`: Increase or Decrease the percentage of urls removed (default: 86 % removed after prioritization removal)
+- `--size`: Increase or Decrease the percentage of urls removed (default: 93 % removed after prioritization removal)
 
 ---
 
