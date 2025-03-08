@@ -40,7 +40,7 @@ def display_state(stdscr, state, start_time):
     height, width = stdscr.getmaxyx()
     stdscr.addstr(23, 1, f"Remaining: {state['remaining']:.2f}%")
     stdscr.addstr(25, 1, f"{state['total']}")
-    bar_length = int(width / state['total'] if state['total'] > 0 else 0)
+    bar_length = int((width + 1) / state['total'] if state['total'] > 0 else 0)
     stdscr.addstr(26, 1, f"{bar_length}")
     stdscr.addstr(27, 1, f"{state['position']}")
     bar = "█" * bar_length * state['position']
