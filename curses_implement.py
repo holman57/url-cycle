@@ -145,7 +145,11 @@ def main(stdscr):
                     elif key == curses.KEY_DOWN:
                         state['history'].append(page[0])
                     elif key == curses.KEY_UP:
-                        state['history'].pop()
+                        if len(state['history']) > 0:
+                            if len(state['history']) > 1:
+                                state['history'].pop()
+                        else:
+                            state['history'].append(" ")
                     elif key != curses.KEY_RESIZE:
                         webbrowser.open(page[0], new=1, autoraise=True)
                         break
