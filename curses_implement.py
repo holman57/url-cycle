@@ -89,6 +89,14 @@ def load_and_shuffle_data(filename, size):
     return data, loop_list
 
 
+def update_state(state, page):
+    state['position'] = state.get('position', 0) + 1
+    state['remaining'] = (state['total'] - state['position']) / state['total'] * 100 if state['total'] > 0 else 0
+    state['history'].append(page[0])
+    state[page[1].lower()] = state.get(page[1].lower(), 0) + 1
+    state['iterations'] += 1
+
+
 def main(stdscr):
     state = {
         'cycle': 0,
@@ -115,16 +123,9 @@ def main(stdscr):
             state['cycle'] += 1
             data, loop_list = load_and_shuffle_data(str(args.filename), args.size)
             state['total'] = len(loop_list)
+            state['position'] = 0
             for i, page in enumerate(loop_list):
-                state['position'] = i + 1
-                remaining = state['total'] - (i + 1)
-                state['remaining'] = (remaining / state['total']) * 100 if state['total'] > 0 else 0
-                state['history'].append(page[0])
-                if page[1] == 'High': state['high'] += 1
-                if page[1] == 'Normal': state['normal'] += 1
-                if page[1] == 'Low': state['low'] += 1
-                if page[1] == 'Extra': state['extra'] += 1
-                state['iterations'] += 1
+                update_state(state, page)
                 while True:
                     key = stdscr.getch()
                     if key == ord('q'):
