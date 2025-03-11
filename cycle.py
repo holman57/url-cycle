@@ -30,6 +30,12 @@ parser.add_argument("-s", "--size", action="store_true", help="Size of the proba
 args = parser.parse_args()
 
 
+def display_progress_bar(stdscr, state, width):
+    bar_length = int((width + 1) / state['total']) if state['total'] > 0 else 0
+    bar = "█" * bar_length * state['position']
+    stdscr.addstr(0, 0, bar)
+
+
 def display_state(stdscr, state, start_time):
     stdscr.erase()
     elapsed_time = time.time() - start_time
@@ -37,9 +43,7 @@ def display_state(stdscr, state, start_time):
         f"{int(elapsed_time / 60)}:{int(elapsed_time % 60):02} m" if elapsed_time < 3600 else \
             f"{elapsed_time / 3600:.2f} h"
     height, width = stdscr.getmaxyx()
-    bar_length = int((width + 1) / state['total']) if state['total'] > 0 else 0
-    bar = "█" * bar_length * state['position']
-    stdscr.addstr(0, 0, bar)
+    display_progress_bar(stdscr, state, width)
     stdscr.addstr(1, 2, f"start: {time.ctime(start_time)}")
     stdscr.addstr(3, 0, f" ┌─────────────┐\n │ {display_time}\n └─────────────┘")
     stdscr.addstr(4, 15, "│")
