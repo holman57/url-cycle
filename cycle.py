@@ -102,6 +102,7 @@ def load_and_shuffle_data(filename, size):
     loop_list = priority1 + priority2 + priority3
     remove_random_elements(loop_list, size)
     loop_list += [[random.choice(data["Extra"]), "Extra"]]
+    loop_list += [[random.choice(data["Low"]), "Low"]]
     random.shuffle(loop_list)
     return data, loop_list
 
