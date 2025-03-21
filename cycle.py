@@ -36,17 +36,20 @@ def display_progress_bar(stdscr, state, width):
     stdscr.addstr(0, 0, bar)
 
 
-def display_state(stdscr, state, start_time):
+def display_state(stdscr, state):
     stdscr.erase()
-    elapsed_time = time.time() - start_time
+    if state['timer'] == 1:
+        elapsed_time = time.time() - state['start_time'] - state['paused_time_total']
+    else:
+        elapsed_time = state['elapsed_time']
     display_time = f"{elapsed_time:.2f} s" if elapsed_time < 60 else \
         f"{int(elapsed_time / 60)}:{int(elapsed_time % 60):02} m" if elapsed_time < 3600 else \
             f"{int(elapsed_time / 3600) :02}:{int((elapsed_time % 3600) / 60):02}:{int(elapsed_time % 60):02} h"
     height, width = stdscr.getmaxyx()
     display_progress_bar(stdscr, state, width)
-    stdscr.addstr(1, 2, f"start: {time.ctime(start_time)}")
+    stdscr.addstr(1, 2, f"start: {time.ctime(state['start_time'])}")
     stdscr.addstr(3, 0, f" ┌─────────────┐\n │ {display_time}\n └─────────────┘")
-    stdscr.addstr(4, 15, "│")
+    stdscr.addstr(4, 15, "│" + ("" if state['timer'] == 1 else " * Paused"))
     stdscr.addstr(7, 3, f"High: {state['high']}")
     stdscr.addstr(7, 15, f"Normal: {state['normal']}")
     stdscr.addstr(7, 30, f"Low: {state['low']}")
@@ -56,18 +59,23 @@ def display_state(stdscr, state, start_time):
     stdscr.addstr(11, 11, f"up next: {state['history'][state['history_index']] if state['history_index'] > -1 and len(state['history']) > 0 else ' '}")
     stdscr.addstr(13, 11, f"current: {state['history'][-2] if state['history_index'] > 0 and len(state['history']) > 1 else ' '}")
     stdscr.addstr(15, 14, f"prev: {state['history'][-3] if state['history_index'] > 1 and len(state['history']) > 2 else ' '}")
-    stdscr.addstr(17, 3, "Press 'q' to quit.")
-    stdscr.addstr(19, 3, "Press Any Key to Open...")
-    stdscr.addstr(21, 3, f"history len: {len(state['history'])}")
-    stdscr.addstr(23, 3, f"position: {(state['cycle'] - 1) * state['total'] + state['position']}")
-    stdscr.addstr(25, 3, f"history index: {state['history_index']}")
+    stdscr.addstr(17, 5, "'q' to Quit")
+    stdscr.addstr(18, 5, "'p' to Pause")
+    stdscr.addstr(19, 5, "Any Key to Open...")
+    # stdscr.addstr(23, 3, f"history len: {len(state['history'])}")
+    # stdscr.addstr(24, 3, f"position: {(state['cycle'] - 1) * state['total'] + state['position']}")
+    # stdscr.addstr(25, 3, f"history index: {state['history_index']}")
+    if state['timer'] == 1:
+        state['elapsed_time'] = elapsed_time
+    else:
+        state['paused_time'] = time.time() - state['paused_start_time']
     stdscr.refresh()
 
 
 def background_update(stdscr, state):
-    start_time = time.time()
+    state['start_time'] = time.time()
     while True:
-        display_state(stdscr, state, start_time)
+        display_state(stdscr, state)
         time.sleep(0.01)
 
 
@@ -98,12 +106,28 @@ def load_and_shuffle_data(filename, size):
     return data, loop_list
 
 
+def resume_timer(state):
+    if state['timer'] == 0:
+        state['paused_time_total'] += state['paused_time']
+    state['timer'] = 1
+
+
 def update_state(state, page):
     state['position'] = state.get('position', 0) + 1
     state['remaining'] = (state['total'] - state['position']) / state['total'] * 100 if state['total'] > 0 else 0
     state['history'].append(page[0])
     state[page[1].lower()] = state.get(page[1].lower(), 0) + 1
     state['iterations'] += 1
+
+
+def update_history(state, page):
+    if len(state['history']) == (state['cycle'] - 1) * state['total'] + state['position']:
+        webbrowser.open(page[0], new=1, autoraise=True)
+        state['history_index'] += 1
+    else:
+        webbrowser.open(state['history'][state['history_index']], new=1, autoraise=True)
+        state['history'] = state['history'][:state['history_index']]
+    resume_timer(state)
 
 
 def main(stdscr):
@@ -119,6 +143,12 @@ def main(stdscr):
         'total': 0,
         'position': 0,
         'history_index': 0,
+        'timer': 1,
+        'elapsed_time': 0.0,
+        'start_time': 0.0,
+        'paused_time': 0.0,
+        'paused_start_time': 0.0,
+        'paused_time_total': 0.0,
     }
     update_thread = threading.Thread(
         target=background_update,
@@ -140,27 +170,27 @@ def main(stdscr):
                     key = stdscr.getch()
                     if key == ord('q'):
                         os._exit(0)
+                    elif key == ord('p'):
+                        if state['timer'] == 1:
+                            state['timer'] = 0
+                            state['paused_start_time'] = time.time()
+                        elif state['timer'] == 0:
+                            resume_timer(state)
+                        continue
                     elif key == curses.KEY_RESIZE:
                         continue
                     elif key == curses.KEY_DOWN:
                         if len(state['history']) != state['history_index']:
                             state['history_index'] += 1
                         else:
+                            resume_timer(state)
                             break
                     elif key == curses.KEY_UP:
-                        if len(state['history']) > 0:
-                            if len(state['history']) > 1:
-                                if state['history_index'] > 0:
-                                    state['history_index'] -= 1
+                        if state['history_index'] > 0:
+                            state['history_index'] -= 1
                     elif key != curses.KEY_RESIZE:
-                        if len(state['history']) == (state['cycle'] - 1) * state['total'] + state['position']:
-                            webbrowser.open(page[0], new=1, autoraise=True)
-                            state['history_index'] += 1
-                            break
-                        else:
-                            webbrowser.open(state['history'][state['history_index']], new=1, autoraise=True)
-                            state['history'] = state['history'][:state['history_index']]
-                            break
+                        update_history(state, page)
+                        break
     except KeyboardInterrupt:
         pass
 
