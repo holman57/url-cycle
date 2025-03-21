@@ -41,7 +41,7 @@ def display_state(stdscr, state, start_time):
     elapsed_time = time.time() - start_time
     display_time = f"{elapsed_time:.2f} s" if elapsed_time < 60 else \
         f"{int(elapsed_time / 60)}:{int(elapsed_time % 60):02} m" if elapsed_time < 3600 else \
-            f"{elapsed_time / 3600:.2f} h"
+            f"{int(elapsed_time / 3600) :02}:{int((elapsed_time % 3600) / 60):02}:{int(elapsed_time % 60):02} h"
     height, width = stdscr.getmaxyx()
     display_progress_bar(stdscr, state, width)
     stdscr.addstr(1, 2, f"start: {time.ctime(start_time)}")
