@@ -48,7 +48,7 @@ def display_state(stdscr, state):
     height, width = stdscr.getmaxyx()
     display_progress_bar(stdscr, state, width)
     stdscr.addstr(1, 2, f"start: {time.ctime(state['start_time'])}")
-    stdscr.addstr(1, 35, f"-  {(state['cycle'] - 1) * state['total'] + state['position']}/{state['total']}")
+    stdscr.addstr(1, 35, f"-  {state['position']}/{state['total']}")
     stdscr.addstr(3, 0, f" ┌─────────────┐\n │ {display_time}\n └─────────────┘")
     stdscr.addstr(4, 15, "│" + ("" if state['timer'] == 1 else " * Paused"))
     stdscr.addstr(7, 3, f"High: {state['high']}")
