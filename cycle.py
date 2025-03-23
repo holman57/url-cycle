@@ -48,6 +48,7 @@ def display_state(stdscr, state):
     height, width = stdscr.getmaxyx()
     display_progress_bar(stdscr, state, width)
     stdscr.addstr(1, 2, f"start: {time.ctime(state['start_time'])}")
+    stdscr.addstr(1, 35, f"-  {(state['cycle'] - 1) * state['total'] + state['position']}/{state['total']}")
     stdscr.addstr(3, 0, f" ┌─────────────┐\n │ {display_time}\n └─────────────┘")
     stdscr.addstr(4, 15, "│" + ("" if state['timer'] == 1 else " * Paused"))
     stdscr.addstr(7, 3, f"High: {state['high']}")
@@ -63,7 +64,6 @@ def display_state(stdscr, state):
     stdscr.addstr(18, 5, "'p' to Pause")
     stdscr.addstr(19, 5, "Any Key to Open...")
     # stdscr.addstr(23, 3, f"history len: {len(state['history'])}")
-    # stdscr.addstr(24, 3, f"position: {(state['cycle'] - 1) * state['total'] + state['position']}")
     # stdscr.addstr(25, 3, f"history index: {state['history_index']}")
     if state['timer'] == 1:
         state['elapsed_time'] = elapsed_time
