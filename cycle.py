@@ -132,6 +132,34 @@ def update_history(state, page):
     resume_timer(state)
 
 
+def handle_key(stdscr, state, page):
+    key = stdscr.getch()
+    if key == ord('q'):
+        os._exit(0)
+    elif key == ord('p'):
+        if state['timer'] == 1:
+            state['timer'] = 0
+            state['paused_start_time'] = time.time()
+        elif state['timer'] == 0:
+            resume_timer(state)
+        return True  # Return True to continue the inner loop
+    elif key == curses.KEY_RESIZE:
+        return True
+    elif key == curses.KEY_DOWN:
+        if len(state['history']) != state['history_index']:
+            state['history_index'] += 1
+        else:
+            resume_timer(state)
+            return False
+    elif key == curses.KEY_UP:
+        if state['history_index'] > 0:
+            state['history_index'] -= 1
+    elif key != curses.KEY_RESIZE:
+        update_history(state, page)
+        return False
+    return True
+
+
 def main(stdscr):
     state = {
         'cycle': 0,
@@ -169,29 +197,7 @@ def main(stdscr):
             for i, page in enumerate(loop_list):
                 update_state(state, page)
                 while True:
-                    key = stdscr.getch()
-                    if key == ord('q'):
-                        os._exit(0)
-                    elif key == ord('p'):
-                        if state['timer'] == 1:
-                            state['timer'] = 0
-                            state['paused_start_time'] = time.time()
-                        elif state['timer'] == 0:
-                            resume_timer(state)
-                        continue
-                    elif key == curses.KEY_RESIZE:
-                        continue
-                    elif key == curses.KEY_DOWN:
-                        if len(state['history']) != state['history_index']:
-                            state['history_index'] += 1
-                        else:
-                            resume_timer(state)
-                            break
-                    elif key == curses.KEY_UP:
-                        if state['history_index'] > 0:
-                            state['history_index'] -= 1
-                    elif key != curses.KEY_RESIZE:
-                        update_history(state, page)
+                    if not handle_key(stdscr, state, page):
                         break
     except KeyboardInterrupt:
         pass
