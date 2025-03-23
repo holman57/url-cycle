@@ -85,7 +85,7 @@ def remove_random_elements(arr, percentage):
     return arr
 
 
-def load_and_shuffle_data(filename, size):
+def load_and_shuffle_data(stdscr, filename, size):
     with open(filename) as json_file:
         data = json.load(json_file)
     priority1 = [[x, 'High'] for x in data["High Priority"]]
@@ -104,6 +104,7 @@ def load_and_shuffle_data(filename, size):
     loop_list += [[random.choice(data["Normal Priority"]), "Normal"]]
     loop_list += [[random.choice(data["High Priority"]), "High"]]
     random.shuffle(loop_list)
+    stdscr.refresh()
     return data, loop_list
 
 
@@ -162,7 +163,7 @@ def main(stdscr):
             stdscr.clear()
             curses.curs_set(0)
             state['cycle'] += 1
-            data, loop_list = load_and_shuffle_data(str(args.filename), args.size)
+            data, loop_list = load_and_shuffle_data(stdscr, str(args.filename), args.size)
             state['total'] = len(loop_list)
             state['position'] = 0
             for i, page in enumerate(loop_list):
