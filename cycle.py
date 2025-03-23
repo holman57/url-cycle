@@ -63,8 +63,6 @@ def display_state(stdscr, state):
     stdscr.addstr(17, 5, "'q' to Quit")
     stdscr.addstr(18, 5, "'p' to Pause")
     stdscr.addstr(19, 5, "Any Key to Open...")
-    # stdscr.addstr(23, 3, f"history len: {len(state['history'])}")
-    # stdscr.addstr(25, 3, f"history index: {state['history_index']}")
     if state['timer'] == 1:
         state['elapsed_time'] = elapsed_time
     else:
