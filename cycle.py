@@ -11,7 +11,7 @@ import curses
 # pip install windows-curses
 
 DEFAULT_FILENAME = "url.json"
-DEFAULT_SIZE = 93
+DEFAULT_SIZE = 95
 
 parser = argparse.ArgumentParser(
     prog="Cycle List",
@@ -94,8 +94,8 @@ def load_and_shuffle_data(stdscr, filename, size):
     random.shuffle(priority1)
     random.shuffle(priority2)
     random.shuffle(priority3)
-    priority1 = remove_random_elements(priority1, 60)
-    priority2 = remove_random_elements(priority2, 40)
+    priority1 = remove_random_elements(priority1, 40)
+    priority2 = remove_random_elements(priority2, 60)
     priority3 = remove_random_elements(priority3, 95)
     loop_list = priority1 + priority2 + priority3
     remove_random_elements(loop_list, size)
