@@ -94,8 +94,8 @@ def load_and_shuffle_data(stdscr, filename, size):
     random.shuffle(priority1)
     random.shuffle(priority2)
     random.shuffle(priority3)
-    priority1 = remove_random_elements(priority1, 40)
-    priority2 = remove_random_elements(priority2, 60)
+    priority1 = remove_random_elements(priority1, 30)
+    priority2 = remove_random_elements(priority2, 70)
     priority3 = remove_random_elements(priority3, 95)
     loop_list = priority1 + priority2 + priority3
     remove_random_elements(loop_list, size)
